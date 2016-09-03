@@ -1,0 +1,15 @@
+<div class="question-form-wrap">
+  <div class="inner-question-form-wrap">
+    <h1 class="q-form-title">Ask <span style="color: white;">Away!</span></h1><br/><br/><br/>
+    <h3 class="q-form-phrase">Please Fill Out All Entries</h3>
+      <%= form_for :question, url: '/questions' do |f| %>
+        <%= f.text_field :q_title, class: "q-field", placeholder: "Question" %>
+        <%= f.text_area :q_content, class: "q-desc-field", placeholder: "Description" %>
+        <%= f.select :subject, [['Subject'], ['Science','science'], ['Technology','technology'],['Mathematics','mathematics'], ['Language', 'language'],
+        ['Art', 'art'], ['Life', 'life'], ['Education', 'education'], ['Computer Science', 'computer science'],
+        ['Geography', 'geography'], ['Health', 'health'], ['History', 'history'], ['Law', 'law'], ['Random', 'random'],
+        ['Sports', 'sports'], ['Politics', 'politics'],['Architecture', 'architecture'], ['Other', 'other']], class: 'q-subject-field', placeholder: "Subject" %>
+        <%= f.submit "Ask Question", class: "q-submit-btn" %>
+      <% end %>
+  </div>
+</div> 

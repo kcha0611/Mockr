@@ -1,0 +1,7 @@
+<h1>Answers</h1>
+<%@answers.each do |answer| %>
+<li><%=answer.a_content%></li>
+  <%answer.comments.each do |comment|%>
+  <li><%=comment.c_content%></li>
+  <%end%>
+<%end%>

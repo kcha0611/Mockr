@@ -1,0 +1,171 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.splash-div-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8%;
+}
+
+body {
+  height: 100%;
+  margin: 0px
+}
+
+html {
+  height: 100%;
+  background: #68aded;
+}
+
+.inner-splash-container {
+}
+
+.splash-title {
+  font-size: 140px;
+  margin-bottom: 10px;
+  letter-spacing: 8px;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+}
+
+.other-title-split {
+  display: inline;
+  font-weight: normal;
+}
+
+.splash-other-title {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.splash-phrase {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.mockr-questions-splash, .linkedin-splash, .github-splash {
+  text-decoration: none;
+  font-size: 25px;
+  padding: 10px;
+  color: white;
+  padding-top: 0px;
+}
+
+.mockr-questions-splash {
+  border-right: 1px solid white;
+}
+
+.github-splash {
+  border-right: 1px solid white;
+}
+
+
+.splash-link-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-title {
+  display: inline;
+}
+
+.navbar-link-wrap {
+  float: right;
+  position: relative;
+  right: 40%;
+}
+
+.home-navbar {
+  text-decoration: none;
+  font-size: 18px;
+  top: 37px;
+  position: relative;
+  margin-right: 10px;
+  border: 1px solid #4cae4c;
+  background: #5cb85c;
+  padding: 11px;
+  border-radius: 5px;
+  color: white;
+}
+
+.new-question-navbar {
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  top: 36px;
+  border: 1px solid #337ab7;
+  background: #337ab7;
+  padding: 13px;
+  border-radius: 5px;
+  color: white;
+  margin-right: 10px;
+}
+
+.login-toggle {
+  float: right;
+  position: relative;
+  // right: 29%;
+}
+
+.navbar-title {
+  font-size: 90px;
+  padding: 0px;
+  font-weight: normal;
+  color: white;
+  left: 9.3%;
+  position: relative;
+  letter-spacing: 8px;
+  bottom: 17px;
+  position: relative;
+  top: 2px;
+}
+
+.navbar {
+  height: 73px;
+}
+
+.navbar-signup {
+  text-decoration: none;
+  font-size: 20px;
+  position: relative;
+  bottom: 37px;
+  border: 1px solid #4cae4c;
+  background: #5cb85c;
+  padding: 16px;
+  border-radius: 5px;
+  color: white;
+}
+
+.navbar-login {
+  text-decoration: none;
+  font-size: 22px;
+  bottom: 37px;
+  position: relative;
+  margin-right: 14px;
+  border: 1px solid #337ab7;
+  background: #337ab7;
+  padding: 14px;
+  border-radius: 5px;
+  color: white;
+
+}
+
+.contact-navbar {
+  text-decoration: none;
+  font-size: 18px;
+  top: 37px;
+  position: relative;
+  margin-right: 10px;
+  border: 1px solid #4cae4c;
+  background: #5cb85c;
+  padding: 11px;
+  border-radius: 5px;
+  color: white;
+}
+
+.navbar-wrap {
+  background: #68aded;
+}

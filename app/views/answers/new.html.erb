@@ -1,0 +1,6 @@
+<h1>Write your Answer!</h1>
+  <%= form_for :answer, url: "/questions/#{@question.id}/answers" do |f| %>
+    Answer: <%= f.text_area :a_content %>
+    <%= f.submit "Answer Question" %>
+  <% end %>
+<a href="/questions">Questions</a>

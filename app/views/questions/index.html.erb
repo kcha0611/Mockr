@@ -1,0 +1,495 @@
+<div id="main-question-index-wrap">
+  <div class="question-intro-box">
+    <h3 class="question-int-phrase">Mockr Q&A communities aren't your typical forum. Here's how:</h3>
+    <div class="first-sec-q-intro">
+      <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_130,w_188/v1471574921/bubble_kzzecw.png" class="question-int-img">
+      <h4 class="first-sec-q-title">Tons of Categories to choose from.</h4>
+      <p class="question-intro-phrase">Our community is filled with experts in every subject, we can guarantee that you'll find the answers you need.</p>
+    </div>
+
+    <div class="second-sec-q-intro">
+      <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_130,w_208/v1471574993/vote_wrqesy.png" class="question-int-img">
+      <h4 class="second-sec-q-title">Get rewarded for your answers.</h4>
+      <p class="question-intro-phrase">Experts like you can vote on posts, so the most helpful answers are easy to find.</p>
+        <a class="intro-learn-more-btn">Learn More</a>
+    </div>
+
+    <div class="third-sec-q-intro">
+      <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_130,w_188/v1471575095/check_qi8uw0.png" class="question-int-img">
+      <h4 class="third-sec-q-title">Share knowledge. Earn trust.</h4>
+      <p class="question-intro-phrase">Earn reputation and additional privileges for posts others find helpful.</p>
+    </div>
+  </div>
+
+
+    <ul class="question-index-tab-wrap">
+      <li style="display: inline;"><a href="#question-index-wrap" class="newest-tab-q-index">All</a></li>
+      <li style="display: inline;"><a href="#question-index-wrap1" class="random-tab-q-index">Random</a></li>
+      <li style="display: inline;"><a href="#question-index-wrap2" class="popular-tab-q-index">Popular</a></li>
+      <li style="display: inline;"><a href="#question-index-wrap3" class="unanswered-tab-q-index">Unanswered</a></li>
+    </ul>
+
+  <div class="improve-feed">
+    <h2 class="improve-feed-title">Improve Your Experience</h2>
+    <p class="feed-phrase1"><img class="feed-phrase-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/v1471638677/check-circle_1_cltyj8.png"></img>Successfully Log In</p>
+    <p class="feed-phrase"><img class="feed-phrase-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/v1471638650/check-circle-outline_2_e7peos.png"></img>Ask a Question</p>
+    <p class="feed-phrase"><img class="feed-phrase-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/v1471638650/check-circle-outline_2_e7peos.png"></img>Answer a Question</p>
+    <p class="feed-phrase"><img class="feed-phrase-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/v1471638650/check-circle-outline_2_e7peos.png"></img>Invite Your Friends</p>
+    <p class="feed-phrase"><img class="feed-phrase-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/v1471638650/check-circle-outline_2_e7peos.png"></img>Donate to Mockr!</p>
+  </div>
+
+  <div class="questions-for-you">
+    <h2 class="questions-for-you-title">Questions You Might Like</h2>
+    <div class="inner-qfy-wrap1">
+      <a href="/questions/6" class="question-tag">Why is the Earth so round?</a> <p style="display: inline;" class="view-qyl"><%=1 + rand(100)%>k views</p>
+      <p style="float: left; margin: 0;" class="question-one-occ">Joe Kim, I am a lover of dogs and this website!</p>
+      <p class="subject-qfy">Answers(3)</p>
+      <p style="float: left; margin: 0;" class="subject-qfy1">Random</p>
+    </div>
+
+    <div class="inner-qfy-wrap1">
+      <a href="/questions/6" class="question-tag">Why is the Earth so flat?</a> <p style="display: inline;" class="view-qyl"><%=1 + rand(100)%>k views</p>
+      <p style="float: left; margin: 0;" class="question-one-occ">Ken Cha, I am a lover of dogs and this website!</p>
+      <p class="subject-qfy">Answers(6)</p>
+      <p style="float: left; margin: 0;" class="subject-qfy1">Random</p>
+    </div>
+
+    <div class="inner-qfy-wrap1">
+      <a href="/questions/6" class="question-tag">Why am I Jasper C today?</a> <p style="display: inline;" class="view-qyl"><%=1 + rand(100)%>k views</p>
+      <p style="float: left; margin: 0;" class="question-one-occ">Jasper C, I am a giver of no fucks and I love this site!</p>
+      <p class="subject-qfy">Answers(32)</p>
+      <p style="float: left; margin: 0;" class="subject-qfy1">Random</p>
+    </div>
+
+    <div class="inner-qfy-wrap1">
+      <a href="/questions/6" class="question-tag">Why am I Jasper C today?</a> <p style="display: inline;" class="view-qyl"><%=1 + rand(100)%>k views</p>
+      <p style="float: left; margin: 0;" class="question-one-occ">Jasper C, I am a giver of no fucks and I love this site!</p>
+      <p class="subject-qfy">Answers(32)</p>
+      <p style="float: left; margin: 0;" class="subject-qfy1">Random</p>
+    </div>
+
+  </div>
+
+  <div class="inner-question-index-wrap">
+    <a name="question-index-wrap"></a>
+    <div id="question-index-wrap" class="questions">
+      <% @questions.each do |question| %>
+        <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+      <div class="questions-info-wrap">
+        <% if question.user.gender == nil %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+        <% elsif question.user.gender == "male" || question.user.gender == "Male" %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+        <% elsif question.user.gender == "female" || question.user.gender == "Female" %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+        <% end %>
+        <% if question.user.phrase == nil %>
+        <% phrase = "I am a lover of dogs and this website!" %>
+        <% else %>
+        <% phrase = question.user.phrase %>
+        <% end %>
+        <% if question.user.occupation == nil %>
+        <% random_year = 1 + rand(5) %>
+        <% random_view = 1 + rand(1000) %>
+        <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+        <% else %>
+        <% question.user.occupation %>
+        <% end %>
+        <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+        <p class="profile-occ"><%=occupation%></p>
+    </div>
+
+      <div class="all-question-wrap">
+        <div class="index-item-wrap">
+          <div class="inner-index-item-wrap">
+            <% unless question.q_title.split("").include?("?") %>
+            <% question.q_title += "?" %>
+            <% end %>
+            <a href="/questions/<%=question.id%>" class="question-a-tag"><%=question.q_title%></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div style="display:inline;">
+
+      </div>
+      <div class="index-btn-wrap">
+          <div class="upvote-btn-wrap" style="display: inline;">
+            <%=link_to upvote_question_url(question), method: :put do %>
+            <button class="upvote-btn-index">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=question.get_upvotes.size - question.get_downvotes.size%></p></button>
+            <%end%>
+          </div>
+        <div class="answer-link-img-wrap-index" style="display: inline;">
+          <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+          <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+        </div>
+
+        <div class="comment-link-img-wrap-index" style="display: inline;">
+          <!-- <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+          <a href="" class="add-comment-link-index">Comment</a> -->
+          <%= link_to downvote_question_url(question), method: :put do %>
+          <button class="downvote-button-index">Downvote</button>
+          <% end %>
+        </div>
+
+        <div class="comments-wrap-index" style="display: inline">
+          <a href="" class="all-comments-link-index">Answers</a>
+          <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+
+
+  <div class="inner-question-index-wrap">
+    <a name="question-index-wrap"></a>
+    <div id="question-index-wrap1" class="questions">
+      <% @rand_questions.each do |question| %>
+        <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+      <div class="questions-info-wrap">
+        <% if question.user.gender == nil %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+        <% elsif question.user.gender == "male" || question.user.gender == "Male" %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+        <% elsif question.user.gender == "female" || question.user.gender == "Female" %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+        <% end %>
+        <% if question.user.phrase == nil %>
+        <% phrase = "I am a lover of dogs and this website!" %>
+        <% else %>
+        <% phrase = question.user.phrase %>
+        <% end %>
+        <% if question.user.occupation == nil %>
+        <% random_year = 1 + rand(5) %>
+        <% random_view = 1 + rand(1000) %>
+        <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+        <% else %>
+        <% question.user.occupation %>
+        <% end %>
+        <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+        <p class="profile-occ"><%=occupation%></p>
+    </div>
+
+      <div class="all-question-wrap">
+        <div class="index-item-wrap">
+          <div class="inner-index-item-wrap">
+            <% unless question.q_title.split("").include?("?") %>
+            <% question.q_title += "?" %>
+            <% end %>
+            <a href="/questions/<%=question.id%>" class="question-a-tag"><%=question.q_title%></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div style="display:inline;">
+
+      </div>
+      <div class="index-btn-wrap">
+        <div class="upvote-btn-wrap" style="display: inline;">
+          <%=link_to upvote_question_url(question), method: :put do %>
+          <button class="upvote-btn-index">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=question.get_upvotes.size - question.get_downvotes.size%></p></button>
+          <%end%>
+        </div>
+        <div class="answer-link-img-wrap-index" style="display: inline;">
+          <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+          <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+        </div>
+
+        <div class="comment-link-img-wrap-index" style="display: inline;">
+          <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+          <a href="" class="add-comment-link-index">Comment</a>
+        </div>
+
+        <div class="comments-wrap-index" style="display: inline">
+          <a href="" class="all-comments-link-index">Answers</a>
+          <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+
+
+<!-- <div class="inner-question-index-wrap">
+    <div id="question-index-wrap1" class="questions">
+      <% @rand_questions.each do |question| %>
+      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+      <% if question.user.gender == nil %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+      <% end %>
+      <% if question.user.phrase == nil %>
+      <% phrase = "I am a lover of dogs and this website!" %>
+      <% else %>
+      <% phrase = question.user.phrase %>
+      <% end %>
+      <% if question.user.occupation == nil %>
+      <% random_year = 1 + rand(5) %>
+      <% random_view = 1 + rand(1000) %>
+      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+      <% end %>
+      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+      <p class="profile-occ"><%=occupation%></p>
+      <div class="all-question-wrap">
+        <div class="index-item-wrap">
+          <div class="inner-index-item-wrap">
+            <% unless question.q_title.split("").include?("?") %>
+            <% question.q_title += "?" %>
+            <% end %>
+              <a href="/questions/<%=question.id%>" class="question-a-tag"><%= question.q_title %></a>
+          </div>
+        </div>
+      </div>
+      <div class="answer-link-img-wrap-index" style="display: inline;">
+        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+      </div>
+
+      <div class="comment-link-img-wrap-index" style="display: inline;">
+        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="" class="add-comment-link-index">Comment</a>
+      </div>
+
+      <div class="comments-wrap-index" style="display: inline">
+        <a href="" class="all-comments-link-index">Answers</a>
+        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+      </div>
+      <% end %>
+    </div>
+</div> -->
+
+<!-- <div class="inner-question-index-wrap">
+    <div id="question-index-wrap2" class="questions">
+      <% @pop_questions.each do |question| %>
+      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+      <% if question.user.gender == nil %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+      <% end %>
+      <% if question.user.phrase == nil %>
+      <% phrase = "I am a lover of dogs and this website!" %>
+      <% else %>
+      <% phrase = question.user.phrase %>
+      <% end %>
+      <% if question.user.occupation == nil %>
+      <% random_year = 1 + rand(5) %>
+      <% random_view = 1 + rand(1000) %>
+      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+      <% end %>
+      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+      <p class="profile-occ"><%=occupation%></p>
+      <div class="all-question-wrap">
+        <div class="index-item-wrap">
+          <div class="inner-index-item-wrap">
+            <% unless question.q_title.split("").include?("?") %>
+            <% question.q_title += "?" %>
+            <% end %>
+              <a href="/questions/<%=question.id%>" class="question-a-tag"><%= question.q_title %></a>
+          </div>
+        </div>
+      </div>
+      <div class="answer-link-img-wrap-index" style="display: inline;">
+        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+      </div>
+
+      <div class="comment-link-img-wrap-index" style="display: inline;">
+        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="" class="add-comment-link-index">Comment</a>
+      </div>
+
+      <div class="comments-wrap-index" style="display: inline">
+        <a href="" class="all-comments-link-index">Answers</a>
+        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+      </div>
+      <% end %>
+    </div>
+</div> -->
+
+<div class="inner-question-index-wrap">
+  <a name="question-index-wrap"></a>
+  <div id="question-index-wrap2" class="questions">
+    <% @pop_questions.each do |question| %>
+      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+    <div class="questions-info-wrap">
+      <% if question.user.gender == nil %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+      <% elsif question.user.gender == "male" || question.user.gender == "Male" %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+      <% elsif question.user.gender == "female" || question.user.gender == "Female" %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+      <% end %>
+      <% if question.user.phrase == nil %>
+      <% phrase = "I am a lover of dogs and this website!" %>
+      <% else %>
+      <% phrase = question.user.phrase %>
+      <% end %>
+      <% if question.user.occupation == nil %>
+      <% random_year = 1 + rand(5) %>
+      <% random_view = 1 + rand(1000) %>
+      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+      <% else %>
+      <% question.user.occupation %>
+      <% end %>
+      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+      <p class="profile-occ"><%=occupation%></p>
+  </div>
+
+    <div class="all-question-wrap">
+      <div class="index-item-wrap">
+        <div class="inner-index-item-wrap">
+          <% unless question.q_title.split("").include?("?") %>
+          <% question.q_title += "?" %>
+          <% end %>
+          <a href="/questions/<%=question.id%>" class="question-a-tag"><%=question.q_title%></a>
+        </div>
+      </div>
+    </div>
+
+
+    <div style="display:inline;">
+
+    </div>
+    <div class="index-btn-wrap">
+      <div class="upvote-btn-wrap" style="display: inline;">
+        <%=link_to upvote_question_url(question), method: :put do %>
+        <button class="upvote-btn-index">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=question.get_upvotes.size - question.get_downvotes.size%></p></button>
+        <%end%>
+      </div>
+      <div class="answer-link-img-wrap-index" style="display: inline;">
+        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+      </div>
+
+      <div class="comment-link-img-wrap-index" style="display: inline;">
+        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="" class="add-comment-link-index">Comment</a>
+      </div>
+
+      <div class="comments-wrap-index" style="display: inline">
+        <a href="" class="all-comments-link-index">Answers</a>
+        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
+
+<!-- <div class="inner-question-index-wrap">
+    <div id="question-index-wrap3" class="questions">
+      <% @unanswered_questions.each do |question| %>
+      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+      <% if question.user.gender == nil %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+      <% end %>
+      <% if question.user.phrase == nil %>
+      <% phrase = "I am a lover of dogs and this website!" %>
+      <% else %>
+      <% phrase = question.user.phrase %>
+      <% end %>
+      <% if question.user.occupation == nil %>
+      <% random_year = 1 + rand(5) %>
+      <% random_view = 1 + rand(1000) %>
+      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+      <% end %>
+      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+      <p class="profile-occ"><%=occupation%></p>
+      <div class="all-question-wrap">
+        <div class="index-item-wrap">
+          <div class="inner-index-item-wrap">
+            <% unless question.q_title.split("").include?("?") %>
+            <% question.q_title += "?" %>
+            <% end %>
+              <a href="/questions/<%=question.id%>" class="question-a-tag"><%= question.q_title %></a>
+          </div>
+        </div>
+      </div>
+      <div class="answer-link-img-wrap-index" style="display: inline;">
+        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+      </div>
+
+      <div class="comment-link-img-wrap-index" style="display: inline;">
+        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="" class="add-comment-link-index">Comment</a>
+      </div>
+
+      <div class="comments-wrap-index" style="display: inline">
+        <a href="" class="all-comments-link-index">Answers</a>
+        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+      </div>
+      <% end %>
+    </div>
+</div>
+
+</div> -->
+
+<div class="inner-question-index-wrap">
+  <a name="question-index-wrap"></a>
+  <div id="question-index-wrap3" class="questions">
+    <% @unanswered_questions.each do |question| %>
+      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
+    <div class="questions-info-wrap">
+      <% if question.user.gender == nil %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+      <% elsif question.user.gender == "male" || question.user.gender == "Male" %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+      <% elsif question.user.gender == "female" || question.user.gender == "Female" %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+      <% end %>
+      <% if question.user.phrase == nil %>
+      <% phrase = "I am a lover of dogs and this website!" %>
+      <% else %>
+      <% phrase = question.user.phrase %>
+      <% end %>
+      <% if question.user.occupation == nil %>
+      <% random_year = 1 + rand(5) %>
+      <% random_view = 1 + rand(1000) %>
+      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
+      <% else %>
+      <% question.user.occupation %>
+      <% end %>
+      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+      <p class="profile-occ"><%=occupation%></p>
+  </div>
+
+    <div class="all-question-wrap">
+      <div class="index-item-wrap">
+        <div class="inner-index-item-wrap">
+          <% unless question.q_title.split("").include?("?") %>
+          <% question.q_title += "?" %>
+          <% end %>
+          <a href="/questions/<%=question.id%>" class="question-a-tag"><%=question.q_title%></a>
+        </div>
+      </div>
+    </div>
+
+
+    <div style="display:inline;">
+
+    </div>
+    <div class="index-btn-wrap">
+      <div class="upvote-btn-wrap" style="display: inline;">
+        <%=link_to upvote_question_url(question), method: :put do %>
+        <button class="upvote-btn-index">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=question.get_upvotes.size - question.get_downvotes.size%></p></button>
+        <%end%>
+      </div>
+      <div class="answer-link-img-wrap-index" style="display: inline;">
+        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
+      </div>
+
+      <div class="comment-link-img-wrap-index" style="display: inline;">
+        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <a href="" class="add-comment-link-index">Comment</a>
+      </div>
+
+      <div class="comments-wrap-index" style="display: inline">
+        <a href="" class="all-comments-link-index">Answers</a>
+        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>

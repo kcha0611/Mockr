@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mockr</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="mockr-body">
+  <%current_uri = request.env['PATH_INFO']%>
+  <% if current_uri != "/" %>
+      <nav class="navbar" style="background: white;">
+        <div class='navbar-wrap'>
+          <h1 class="navbar-title">Mockr</h1>
+          <div class="navbar-link-wrap">
+            <a class="home-navbar" href="/">Home</a>
+            <a class="new-question-navbar" href="/questions/new">Ask Question</a>
+            <a class="contact-navbar" href="">Contact</a>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+  <!-- <% login = link_to 'Login', '/login' %>
+  <% signup = link_to 'Signup', '/signup' %> -->
+
+  <% if current_user %>
+    Signed in as <%= current_user.first_name + " " + current_user.last_name %> | <%= link_to "Logout", '/logout' %>
+  <% elsif current_uri == "/" %>
+    <%= %>
+  <% else %>
+    <div class="login-toggle">  <a href="/login" class="navbar-login">Login</a> <a href="/signup" class="navbar-signup">Sign Up</a></div>
+  <% end %>
+
+<%= yield %>
+  <script>
+    document.getElementById("question-index-wrap").style.background = "white";
+
+    $('ul.question-index-tab-wrap').each(function(){
+        var $currentTab = $(this).find('a');
+        var $tabContent = $(this).find('a');
+        var $tabLink = $(this).find('a');
+        var currentLocation = window.location.hash;
+        var questionIndexId = $tabLink[0];
+        var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
+
+        $currentTab.addClass('current');
+        $tabContent = $($currentTab[0].hash);
+
+        $tabLink.not($currentTab).each(function () {
+          $(this.hash).hide();
+        });
+
+        $(this).on('click', 'a', function (e) {
+          $currentTab.removeClass('current');
+          $tabContent.hide();
+
+          $currentTab = $(this);
+          $tabContent = $(this.hash);
+
+          $currentTab.addClass('current');
+          $tabContent.show();
+          
+          e.preventDefault();
+        });
+      });
+  </script>
+</body>
+</html>

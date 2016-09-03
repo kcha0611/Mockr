@@ -1,0 +1,228 @@
+<div class="question-show-wrap">
+  <div class="inner-question-show-wrap">
+    <div class="related-questions-wrap">
+      <div class="inner-related-questions-wrap" style="">
+        <p class="related-questions">Related Questions</p>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <!-- <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
+        <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a> -->
+        <a href="" class="more-questions">More Related Questions</a>
+        <p class="question-stats">Question Stats</p>
+        <div class="q-stat1-wrap">
+          <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_30,w_30/v1471993168/-images.icons.question_highlights.follow.svg471c4eb32be622fe_vxypwz.png"/>
+          <p class="q-stat1" style="display: inline;"><%=1 + rand(1000)%> Followers</p>
+        </div>
+        <div class="q-stat2-wrap">
+          <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_30,w_30/v1471993175/-images.icons.question_highlights.views.svg7d006be6eaeddf3f_ktuuzw.png"/>
+          <p class="q-stat2" style="display: inline;"><%=1 + rand(100000)%> views</p>
+        </div>
+
+         <div class="q-stat3-wrap">
+          <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_30,w_30/v1471993161/-images.icons.question_highlights.ask.svge53fbb168a3896cd_vorrla.png"/>
+          <% months = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"] %>
+          <p class="q-stat3" style="display: inline;">Last Asked <%=months[1 + rand(12)]%> <%=1 + rand(30)%></p>
+        </div>
+
+         <div class="q-stat4-wrap">
+          <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_30,w_30/v1471993171/-images.icons.question_highlights.merged.svg5da9f8e16b769379_kcvdos.png"/>
+          <a class="q-stat4" style="display: inline;">1 Merged Question</a>
+        </div>
+
+      <div class="q-stat5-wrap">
+        <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_30,w_30/v1471993165/-images.icons.question_highlights.edits.svg28eb735040609696_gv8ahv.png"/>
+        <p class="q-stat5" style="display: inline;">Edits</p>
+      </div>
+
+      </div>
+    </div>
+    <% if @question.subject == nil %>
+    <p style="display: inline;" class="default-q-subject1">Random</p>
+    <p style="display: inline;" class="default-q-subject2">Life</p>
+    <p style="display: inline;" class="default-q-subject3">Other</p>
+    <% else %>
+    <p style="display: inline;" class="default-q-subject1"><%= @question.subject.capitalize %></p>
+    <p style="display: inline;" class="default-q-subject2">Modern</p>
+    <p style="display: inline;" class="default-q-subject3">Other</p>
+    <% end %>
+    <a href=""><img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471917408/-images.icons.edit_topics.svg12f0352d2ddfe91e_jkxkqg.png" class="q-subject-img" /></a>
+    <% unless @question.q_title.split("").include?("?") %>
+    <h1 class="question-show-title"><%=@question.q_title += "?"%></h1>
+    <% else %>
+    <h1 class="question-show-title"><%=@question.q_title%></h1>
+    <% end %>
+    <p class="question-q-content-show"><%=@question.q_content%> </p>
+    <!-- <a href="/questions">Questions</a> -->
+
+
+    <div class="comment-link-img-wrap" style="display: inline;">
+      <img class="comment-link-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+      <button class="add-comment-link" id="comment-btn-qshow">Comment</button>
+    </div>
+
+    <div class="comments-wrap" style="display: inline">
+      <a href="javascript:void(0)" class="all-comments-link" id="all-comments-link">Comments</a>
+      <p class="num-comments" style="display: inline;"><%=@question.comments.count%></p>
+    </div>
+
+    <!-- <div class="votes-wrap" style="display:inline;">
+      <a href= "" class="all-votes">Votes</a>
+      <p class="num-votes" style="display: inline;"><%=@question.vote%></p>
+    </div> -->
+
+    <div class="downvote-img-wrap" style="display: inline;">
+      <%=link_to upvote_question_url(@question), method: :put do %>
+      <button class="upvote-btn-show">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=@question.get_upvotes.size - @question.get_downvotes.size%></p></button>
+      <% end %>
+    </div>
+
+    <% curr_answer = "" %>
+    <% @question.answers.each do |answer| %>
+      <% if answer.question_id == @question.id %>
+      <% curr_answer = answer %>
+      <% end %>
+    <% end %>
+
+    <div id="comment-form-wrap-qshow">
+        <div class="comment-form-wrap">
+        <%= form_for :comment, url: "#{@question.id}/comments" do |f| %>
+          <%= f.text_field :c_content, placeholder: "Add a comment...", class: "comment-input" %>
+          <%= f.submit "Comment", class: "comment-submit-btn" %>
+          <% end %>
+          <button id="cancel-comment-btn" style="display:inline;">Cancel</button>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function() {
+          $("#comment-form-wrap-qshow").hide();
+          $("#comment-btn-qshow").click(function () {
+            $("#comment-form-wrap-qshow").show();
+          })
+        })
+        $("#cancel-comment-btn").click(function() {
+          $("#comment-form-wrap-qshow").hide();
+        })
+      </script>
+<div class="comment-index-wrap">
+    <div id="comment-index-wrap">
+      <% image = "" %>
+      <% @question.comments.each do |comment| %>
+      <% if comment.user.gender == nil %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+      <% elsif comment.user.gender == "male" || comment.user.gender == "Male" %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+      <% elsif comment.user.gender == "female" || comment.user.gender == "Female" %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+      <% end %>
+      <div class="inner-comment-wrap">
+        <img src="<%=image%>" height="40" width="40" style="background: #f6f6f6;"/>
+        <div class="user-name-comment"><%= comment.user.first_name%> <%= comment.user.last_name %> <p class="num-votes-comment">1 vote show</p></div>
+        <p class="comment-content"><br/><%=comment.c_content%></p>
+      </div>
+      <div class="comment-footer-index">
+        <a href="javascript:void(0)"class="upvote-btn-comment">Upvote ‌• </a>
+        <p style="display: inline; color: #999; font-size: 15px; font-weight: 400;"><%= comment.created_at.strftime("%b %d") %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#comment-index-wrap").hide();
+        $(".all-comments-link").on("click", function () {
+          $("#comment-index-wrap").show();
+        })
+      })
+    </script>
+
+    <div class="q-phrase-wrap">
+      <p class="answer-question-show">Can you answer this question?</p>
+      <img class="q-show-img" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_50,w_50/v1471917408/-images.icons.edit_topics.svg12f0352d2ddfe91e_jkxkqg.png" style="display: inline;"/>
+      <p style="display: inline;" class="num-views-q-show"><%=1 + rand(3000)%> views in the last day.</p>
+      <div class="answer-link-img-wrap">
+        <img class="answer-link-img"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
+        <button class="add-answer-link" id="answer-qshow-btn">Answer</button>
+        <!-- /questions/<%=@question.id%>/answers/new -->
+      </div>
+    </div>
+
+  <div id="answer-form-wrap">
+    <div class="a-form-info-wrap">
+
+    </div>
+        <%= form_for :answer, url: "/questions/#{@question.id}/answers" do |f| %>
+          <%= f.text_area :a_content %>
+          <%= f.submit "Answer Question" %>
+        <% end %>
+        <button class="hide-answer-btn" id="cancel-answer-btn">Cancel</button>
+    </div>
+
+
+
+     <script>
+    $(document).ready(function() {
+      $("#answer-form-wrap").hide();
+      $("#answer-qshow-btn").click(function () {
+        $("#answer-form-wrap").show();
+      })
+    })
+    $("#cancel-answer-btn").click(function() {
+      $("#answer-form-wrap").hide();
+    })
+    </script>
+
+
+    <div class="number-answers-wrap">
+      <% if @question.answers.length > 0 %>
+      <p class="number-answers-qshow"><%=@question.answers.length%>+ Answers </p>
+      <% else %>
+      <p class="number-answers-qshow"><%=@question.answers.length%> Answers</p>
+      <% end %>
+    </div>
+  <div/>
+</div>
+
+<div class="answer-wrap">
+  <% @question.answers.each do |answer| %>
+    <% if answer.question.user.gender == nil %>
+    <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+    <% else %>
+    <% image %>
+    <% end %>
+    <% if answer.question.user.phrase == nil %>
+    <% phrase = "I am a lover of dogs and this website!" %>
+    <% else %>
+    <% phrase = answer.question.user.phrase %>
+    <% end %>
+    <% if answer.question.user.occupation == nil %>
+    <% random_year = 1 + rand(1) %>
+    <% random_view = 1 + rand(1000) %>
+    <% occupation = "#{random_view}k views · Mockr Member for #{random_year} years" %>
+    <% end %>
+    <div class="answer-pro-wrap">
+      <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.question.user.first_name.capitalize + " " + answer.question.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"><br/><%=occupation%></span></p>
+      <!-- <p class="answer-pro-occ" ><%=occupation%></p> -->
+    </div>
+    <p class="qshow-a-content"><%=answer.a_content%></p>
+    <% days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] %>
+    <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;">View Upvotes</a>
+    <div class="answer-buttons-wrap" style="margin-bottom: 8%;">
+      <%votes = []%>
+      <% answer.votes.each do |vote| %>
+      <% votes.push(vote.value) %>
+      <% end %>
+      <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=votes.inject(:+)%></p></button>
+      <a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/new" class="answer-comment-btn"><img class="answer-img-show" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>Comment</a>
+      <a class="answer-dvote-btn"><%=answer.created_at.strftime("%b %d")%></a>
+      <a href="" class="answer-comments-btn">Comments</a> <p style="display: inline; background: #eee; color: #999; font-size: 20px; font-weight: bold; padding: 3px;">10</p>
+    </div>
+  <% end %>
+</div>
