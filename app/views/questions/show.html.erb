@@ -91,6 +91,14 @@
 
     <div id="comment-form-wrap-qshow">
         <div class="comment-form-wrap">
+          <% image = "" %>
+          <% if current_user && current_user.gender == nil %>
+          <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+          <% elsif current_user && (current_user.gender == "male" || current_user.gender == "Male") %>
+          <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+          <% elsif current_user && (current_user.gender == "female" || current_user.gender == "Female") %>
+          <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+          <% end %>
         <%= form_for :comment, url: "/questions/#{@question.id}/comments" do |f| %>
           <ul class="c-errors">
             <% if flash.now[:errors] %>
@@ -99,7 +107,9 @@
               <% end %>
             <% end %>
           </ul>
-          <%= f.text_field :c_content, placeholder: "Add a comment...", class: "comment-input" %>
+          <img src="<%=image%>">
+          <span class="comment-form-name"><%= current_user.nil? ? "Anonymous" : current_user.first_name.capitalize %> <%= current_user.last_name.capitalize if current_user %></br><span class="comment-form-occupation"><%=current_user.occupation.nil? ? "I am a lover of dogs and this website!" : current_user.occupation%></span></span>
+          <%= f.cktext_area :c_content, class: "ckeditor" %>
           <%= f.submit "Comment", class: "comment-submit-btn" %>
           <% end %>
           <button id="cancel-comment-btn" style="display:inline;">Cancel</button>
@@ -132,7 +142,7 @@
       <div class="inner-comment-wrap">
         <img src="<%=image%>" height="40" width="40" style="background: #f6f6f6;"/>
         <div class="user-name-comment"><%= comment.user.first_name%> <%= comment.user.last_name %> <p class="num-votes-comment">1 vote show</p></div>
-        <p class="comment-content"><br/><%=comment.c_content%></p>
+        <p class="comment-content"><br/><%=raw(comment.c_content)%></p>
       </div>
       <div class="comment-footer-index">
         <a href="javascript:void(0)"class="upvote-btn-comment">Upvote ‌• </a>
@@ -174,16 +184,14 @@
 
     <div class="a-form-info-wrap">
       <img src="<%=image%>">
-      <%= current_user.nil? ? "Anonymous" : current_user.first_name %> <%= current_user.last_name if current_user %>
+      <span class="comment-form-name"><%= current_user.nil? ? "Anonymous" : current_user.first_name.capitalize %> <%= current_user.last_name.capitalize if current_user %></br><span class="answer-form-occupation"><%=current_user.occupation.nil? ? "I am a lover of dogs and this website!" : current_user.occupation%></span></span>
         <%= form_for :answer, url: "/questions/#{@question.id}/answers" do |f| %>
-          <%= f.text_area :a_content %>
-          <%= f.submit "Answer Question" %>
+          <%= f.cktext_area :a_content, class: "ckeditor" %>
+          <%= f.submit "Answer", class: "form-answer-btn" %>
         <% end %>
         <button class="hide-answer-btn" id="cancel-answer-btn">Cancel</button>
       </div>
     </div>
-
-
 
      <script>
     $(document).ready(function() {
@@ -229,7 +237,7 @@
       <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.question.user.first_name.capitalize + " " + answer.question.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"><br/><%=occupation%></span></p>
       <!-- <p class="answer-pro-occ" ><%=occupation%></p> -->
     </div>
-    <p class="qshow-a-content"><%=answer.a_content%></p>
+    <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
     <% days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] %>
     <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;">View Upvotes</a>
     <div class="answer-buttons-wrap" style="margin-bottom: 8%;">

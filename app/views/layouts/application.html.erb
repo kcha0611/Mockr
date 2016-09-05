@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="mockr-body">
+  <script>
+  var htmldata = CKEDITOR.instances.Editor.document.getBody().getHtml();
+  </script>
   <%current_uri = request.env['PATH_INFO']%>
   <% if current_uri != "/" %>
       <nav class="navbar" style="background: white;">

@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 gem "tabs_on_rails"
+
+gem 'ckeditor', github: 'galetahub/ckeditor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'acts_as_votable', '~> 0.10.0'
