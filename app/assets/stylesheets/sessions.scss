@@ -1,3 +1,25 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+input#email {
+  margin: 2.5%;
+  font-family: 'Raleway',sans-serif;
+  font-size: 17px;
+  -webkit-box-shadow:0 0 10px;
+}
+
+.email-login {
+  margin-left: 7%;
+  margin-top: 8%;
+}
+
+.password-login {
+  margin-top: 4%;
+}
+
+input#password {
+  margin: 2.5%;
+  font-family: 'Raleway',sans-serif;
+  font-size: 17px;
+  -webkit-box-shadow:0 0 10px;
+}

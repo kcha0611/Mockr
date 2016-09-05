@@ -1,7 +1,16 @@
-<h1>Leave your Comment!</h1>
-  <%= form_for :comment, url: "/questions/#{@answer.question_id}/answers/#{@answer.id}/comments" do |f| %>
-    Comment: <%= f.text_area :c_content %>
-    <%= f.submit "Post your Comment" %>
-  <% end %>
-  
-<a href="/questions">Questions</a>
+<div id="comment-form-wrap-qshow">
+    <div class="comment-form-wrap">
+    <%= form_for :comment, url: "/questions/#{@question.id}/comments" do |f| %>
+      <ul class="c-errors">
+        <% if flash.now[:errors] %>
+          <% flash.now[:errors].each do |error| %>
+           <p class="comment-error">-<%= error %></p><br />
+          <% end %>
+        <% end %>
+      </ul>
+      <%= f.text_field :c_content, placeholder: "Add a comment...", class: "comment-input" %>
+      <%= f.submit "Comment", class: "comment-submit-btn" %>
+      <% end %>
+      <button id="cancel-comment-btn" style="display:inline;">Cancel</button>
+    </div>
+  </div>

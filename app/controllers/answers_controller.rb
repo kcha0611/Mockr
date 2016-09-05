@@ -1,15 +1,15 @@
 class AnswersController < ApplicationController
   before_action :require_logged_in, only: [:new, :create]
-  before_action :set_question, only: [:new, :create]
-
+  # before_action :set_question, only: [:new, :create]
+  before_action :set_answer, only: [:upvote, :downvote, :index]
   def new
     @answer = Answer.new
   end
 
   def create
     @answer = Answer.new(answer_params)
-    debugger
     @answer.user_id = current_user.id
+    @question = Question.find(params[:question_id])
     @answer.question_id = @question.id
     if @answer
       @answer.save!
@@ -37,31 +37,27 @@ class AnswersController < ApplicationController
   def destroy
   end
 
-  private
-  def set_question
-    if @question.nil?
-      @question = Question.find(params[:id]) if @question.nil?
-    elsif
-      @question = Question.find(params[:question_id])
-    end
-  end
-
   def upvote
-    @answer = Answer.find(params[:answer_id])
-    @question = Question.find(params[:question_id])
-    @vote = Vote.find_by(answer_id: @answer.id, user_id: current_user.id)
-
-    if @vote.nil?
-      @answer.votes.create!(user_id: current_user.id, answer_id: @answer.id, value: 1)
-    elsif @vote && @question.votes.all? {|vote| vote.user_id != current_user.id}
-      @vote.update(value: (@vote.value += 1))
-    end
-
+    @answer.upvote_from(current_user)
     redirect_to :back
   end
 
+  def downvote
+    @answer.downvote_from(current_user)
+    redirect_to :back
+  end
+
+  private
+  def set_question
+      @question = Question.find(params[:question_id])
+  end
+
   def answer_params
-    params.require(:answer).permit(:a_content, :question_id, :user_id)
+    params.require(:answer).permit(:a_content)
+  end
+
+  def set_answer
+    @answer = Answer.find(params[:id])
   end
 
 end

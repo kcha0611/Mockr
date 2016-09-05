@@ -1,13 +1,13 @@
 <div class="signup-wrap">
   <div class="inner-signup-wrap">
     <h1 class="signup-title">Sign Up!</h1>
-
+    <%= render partial: "layouts/errors" %>
     <div class="form-wrap"><%= form_for :user, url: '/users' do |f| %>
           <p style="display: inline;"><%= f.text_field :first_name, placeholder: "First Name" %></p>
           <p style="display: inline;"><%= f.text_field :last_name, placeholder: "Last Name" %></p>
           <p><%= f.email_field :email, placeholder: "Email" %></p>
-          <p><%= f.password_field :password, placeholder: "Password" %></p>
-          <p><%= f.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
+          <p style="display: inline;"><%= f.password_field :password, placeholder: "Password" %></p>
+          <p style="display: inline;"><%= f.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
           <p><%= f.text_field :occupation, placeholder: "Occupation" %></p>
           <div class="signup-radio-wrap">
             Male<%= f.radio_button :gender, "Male" %>

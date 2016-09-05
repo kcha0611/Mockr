@@ -8,16 +8,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    # @question = Question.find(params[:question_id])
-    @comment.user_id = current_user.id
-    # @comment.question_id = @question.id
+    @comment.user_id = current_user.id if current_user
     @question = Question.find(params[:question_id])
     @comment.question_id = @question.id
-    if @comment
-      @comment.save!
+    if @comment.save
       redirect_to "/questions/#{@question.id}"
     else
-      render json: ["Somethings fucked up"]
+      flash.now[:errors] = @comment.errors.full_messages
+      render :new
     end
   end
 

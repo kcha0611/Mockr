@@ -91,7 +91,14 @@
 
     <div id="comment-form-wrap-qshow">
         <div class="comment-form-wrap">
-        <%= form_for :comment, url: "#{@question.id}/comments" do |f| %>
+        <%= form_for :comment, url: "/questions/#{@question.id}/comments" do |f| %>
+          <ul class="c-errors">
+            <% if flash.now[:errors] %>
+              <% flash.now[:errors].each do |error| %>
+               <p class="comment-error">-<%= error %></p><br />
+              <% end %>
+            <% end %>
+          </ul>
           <%= f.text_field :c_content, placeholder: "Add a comment...", class: "comment-input" %>
           <%= f.submit "Comment", class: "comment-submit-btn" %>
           <% end %>
@@ -110,6 +117,7 @@
           $("#comment-form-wrap-qshow").hide();
         })
       </script>
+
 <div class="comment-index-wrap">
     <div id="comment-index-wrap">
       <% image = "" %>
@@ -155,14 +163,24 @@
     </div>
 
   <div id="answer-form-wrap">
-    <div class="a-form-info-wrap">
+    <% image = "" %>
+    <% if current_user && current_user.gender == nil %>
+    <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+    <% elsif current_user && (current_user.gender == "male" || current_user.gender == "Male") %>
+    <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+    <% elsif current_user && (current_user.gender == "female" || current_user.gender == "Female") %>
+    <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+    <% end %>
 
-    </div>
+    <div class="a-form-info-wrap">
+      <img src="<%=image%>">
+      <%= current_user.nil? ? "Anonymous" : current_user.first_name %> <%= current_user.last_name if current_user %>
         <%= form_for :answer, url: "/questions/#{@question.id}/answers" do |f| %>
           <%= f.text_area :a_content %>
           <%= f.submit "Answer Question" %>
         <% end %>
         <button class="hide-answer-btn" id="cancel-answer-btn">Cancel</button>
+      </div>
     </div>
 
 
@@ -215,11 +233,9 @@
     <% days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] %>
     <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;">View Upvotes</a>
     <div class="answer-buttons-wrap" style="margin-bottom: 8%;">
-      <%votes = []%>
-      <% answer.votes.each do |vote| %>
-      <% votes.push(vote.value) %>
+      <%=link_to upvote_answer_url(answer), method: :put do %>
+      <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=answer.get_upvotes.size - answer.get_downvotes.size%></p></button>
       <% end %>
-      <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=votes.inject(:+)%></p></button>
       <a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/new" class="answer-comment-btn"><img class="answer-img-show" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>Comment</a>
       <a class="answer-dvote-btn"><%=answer.created_at.strftime("%b %d")%></a>
       <a href="" class="answer-comments-btn">Comments</a> <p style="display: inline; background: #eee; color: #999; font-size: 20px; font-weight: bold; padding: 3px;">10</p>

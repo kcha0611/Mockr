@@ -468,7 +468,7 @@ a.intro-learn-more-btn {
 //   right: 61px;
 // }
 
-.comment-link-img-wrap, .comment-link-img-wrap-index {
+.comment-link-img-wrap {
   border: 1px solid #bbcadc;
   width: 95px;
   display: flex;
@@ -883,4 +883,23 @@ ul.question-index-tab-wrap li a:focus, .active {
   display: flex;
   justify-content: center;
   background: white;
+}
+
+
+.downvote-button-index {
+  background: white;
+  border: none;
+  // text-decoration: none;
+  color: #999;
+  font-weight: 400;
+  font-size: 15px;
+  position:relative;
+  // left: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+.downvote-button-index:hover {
+  cursor: pointer;
 }

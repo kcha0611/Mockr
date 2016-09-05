@@ -30,7 +30,6 @@
   <% else %>
     <div class="login-toggle">  <a href="/login" class="navbar-login">Login</a> <a href="/signup" class="navbar-signup">Sign Up</a></div>
   <% end %>
-
 <%= yield %>
   <script>
     document.getElementById("question-index-wrap").style.background = "white";
@@ -59,7 +58,7 @@
 
           $currentTab.addClass('current');
           $tabContent.show();
-          
+
           e.preventDefault();
         });
       });

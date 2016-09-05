@@ -1,8 +1,11 @@
 class QuestionsController < ApplicationController
-  before_action :require_logged_in, only: [:create, :edit, :update]
+  before_action :require_logged_in, only: [:new, :create, :edit, :update]
   before_action :set_question, only: [:show, :upvote, :downvote]
 
   def new
+    if current_user.nil?
+      redirect_to '/login'
+    end
     @question = Question.new
   end
 
@@ -12,7 +15,8 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to "/questions"
     else
-      render json: ["somethings fucked up"]
+      flash.now[:errors] = @question.errors.full_messages
+      render :new 
     end
   end
 

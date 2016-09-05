@@ -27,12 +27,7 @@ Rails.application.routes.draw do
       put "upvote" => "questions#upvote"
       put "downvote" => "questions#downvote"
     end
-    resources :answers, only: [:new, :create, :show, :index] do
-      # member do
-      #   put "upvote" => "answers#upvote"
-      #   put "downvote" => "answers#downvote"
-      # end
-    end
+    resources :answers, only: [:new, :create, :show, :index]
   end
 
   # resources :answers, only: [:index] do
@@ -40,10 +35,18 @@ Rails.application.routes.draw do
   #   post "upvote"
   # end
 
-  # resources :questions, only: [:index, :show] do
-  #   resources :comments, only: [:new, :index, :create, :destroy] do
-  #   end
-  # end
+  resources :questions, only: [:index, :show] do
+    resources :comments, only: [:new, :index, :create, :destroy] do
+    end
+  end
+
+  resources :answers, only: [:show, :index] do
+    member do
+      put "upvote" => "answers#upvote"
+      put "downvote" => "answers#downvote"
+    end
+  end
+  post '/questions/:question_id/comments' => 'comments#create'
 
   # get 'upvote' => 'questions#upvote'
   # post 'questions/:id' => 'comments#new'

@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  validates :answer_id, :c_content, presence: true
+  validates :c_content, presence: true
 
   belongs_to :answer
 
