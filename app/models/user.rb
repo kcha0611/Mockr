@@ -11,5 +11,9 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
+  has_many :answercomments
+
+  has_many :comments
+
   acts_as_voter
 end

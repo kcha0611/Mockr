@@ -1,0 +1,9 @@
+<div id="answercomment-form-wrap">
+  <div class="answercomment-form-wrap">
+  <h1>Leave a comment on below!</h1>
+    <%= form_for :answercomment, url: "/questions/#{@answer.question_id}/answers/#{@answer.id}/answercomments" do |f| %>
+    <%= f.cktext_area :answercomment_content, class: "ckeditor" %>
+    <%= f.submit "Comment", class: "answercomment-btn" %>
+    <% end %>
+  </div>
+</div>

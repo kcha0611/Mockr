@@ -7,7 +7,7 @@ class Answer < ActiveRecord::Base
 
   acts_as_votable
 
-  has_many :comments
+  has_many :answercomments
 
   has_many :votes
 end
