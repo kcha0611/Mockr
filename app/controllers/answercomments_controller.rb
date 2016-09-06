@@ -1,5 +1,5 @@
 class AnswercommentsController < ApplicationController
-  before_action :require_logged_in, only: [:new, :create]
+  before_action :require_logged_in, only: [:new, :create, :upvote, :downvote]
   before_action :set_answer, only: [:new, :create]
 
   def new

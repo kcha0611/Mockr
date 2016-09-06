@@ -108,7 +108,15 @@
               <% end %>
             </ul>
             <img src="<%=image%>">
-            <span class="comment-form-name"><%= current_user.nil? ? "Anonymous" : current_user.first_name.capitalize %> <%= current_user.last_name.capitalize if current_user %></br><span class="comment-form-occupation"><%=current_user.occupation.nil? ? "I am a lover of dogs and this website!" : current_user.occupation%></span></span>
+            <span class="comment-form-name"><%= current_user.first_name.capitalize if current_user %> <%= current_user.last_name.capitalize if current_user %></br><span class="comment-form-occupation">
+              <% if current_user %>
+                <% if current_user.occupation.nil? %>
+                <%= "I am a lover of dogs and this website!" %>
+                <% else %>
+                <%= current_user.occupation%>
+                <% end %>
+            <% end %>
+              </span></span>
             <%= f.cktext_area :c_content, class: "ckeditor" %>
             <%= f.submit "Comment", class: "comment-submit-btn" %>
             <% end %>
@@ -183,8 +191,23 @@
       <% end %>
 
       <div class="a-form-info-wrap">
+        <div class="a-errors">
+          <% if flash.now[:errors] %>
+            <% flash.now[:errors].each do |error| %>
+             <p class="answer-error">-<%= error %></p><br />
+            <% end %>
+          <% end %>
+        </div>
         <img src="<%=image%>">
-        <span class="comment-form-name"><%= current_user.nil? ? "Anonymous" : current_user.first_name.capitalize %> <%= current_user.last_name.capitalize if current_user %></br><span class="answer-form-occupation"><%=current_user.occupation.nil? ? "I am a lover of dogs and this website!" : current_user.occupation%></span></span>
+        <span class="comment-form-name"><%= current_user.nil? ? "Anonymous" : current_user.first_name.capitalize %> <%= current_user.last_name.capitalize if current_user %></br><span class="answer-form-occupation">
+          <% if current_user %>
+            <% if current_user.occupation.nil? %>
+            <%= "I am a lover of dogs and this website!" %>
+            <% else %>
+            <%= current_user.occupation%>
+            <% end %>
+        <% end %>
+        </span></span>
           <%= form_for :answer, url: "/questions/#{@question.id}/answers" do |f| %>
             <%= f.cktext_area :a_content, class: "ckeditor" %>
             <%= f.submit "Answer", class: "form-answer-btn" %>

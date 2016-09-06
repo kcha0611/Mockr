@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :require_logged_in, only: [:new, :create, :edit, :update]
+  before_action :require_logged_in, only: [:new, :create, :edit, :update, :upvote, :downvote]
   before_action :set_question, only: [:show, :upvote, :downvote]
 
   def new
@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
       redirect_to "/questions"
     else
       flash.now[:errors] = @question.errors.full_messages
-      render :new 
+      render :new
     end
   end
 
@@ -42,6 +42,7 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
+    redirect_to '/login' if current_user.nil?
     @question.upvote_from(current_user)
     redirect_to :back
   end

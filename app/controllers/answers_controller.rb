@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
-  before_action :require_logged_in, only: [:new, :create]
-  # before_action :set_question, only: [:new, :create]
-  before_action :set_answer, only: [:upvote, :downvote, :index]
+  before_action :require_logged_in, only: [:new, :create, :upvote, :downvote]
+  before_action :set_question, only: [:new, :create]
+
   def new
     @answer = Answer.new
   end
@@ -11,11 +11,11 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @question = Question.find(params[:question_id])
     @answer.question_id = @question.id
-    if @answer
-      @answer.save!
+    if @answer.save
       redirect_to "/questions/#{@question.id}"
     else
-      render json: ["somethings fucked up"]
+      flash.now[:errors] = @answer.errors.full_messages
+      render '/questions/show'
     end
   end
 
@@ -38,11 +38,13 @@ class AnswersController < ApplicationController
   end
 
   def upvote
+    @answer = Answer.find(params[:id])
     @answer.upvote_from(current_user)
     redirect_to :back
   end
 
   def downvote
+    @answer = Answer.find(params[:id])
     @answer.downvote_from(current_user)
     redirect_to :back
   end
@@ -53,11 +55,7 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:a_content)
-  end
-
-  def set_answer
-    @answer = Answer.find(params[:id])
+    params.require(:answer).permit(:a_content, :question_id)
   end
 
 end
