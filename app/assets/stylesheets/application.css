@@ -38,3 +38,15 @@ a.logout-btn{
 .navbar-signup {
   margin-right: 120px;
 }
+
+.signup-wrap {
+height: 90.3%;
+}
+
+.signup-form {
+width: 500px;
+}
+
+.login-form {
+width: 400px
+}
