@@ -48,6 +48,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :answercomments do
+    member do
+      put "upvote" => "answercomments#upvote"
+      put "downvote" => "answercomments#downvote"
+    end
+  end 
+
   post '/questions/:question_id/comments' => 'comments#create'
 
   # post '/questions/:question_id/answers/:answer_id/answercomments' => 'answercomments#create'

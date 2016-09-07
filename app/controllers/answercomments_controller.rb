@@ -21,6 +21,18 @@ class AnswercommentsController < ApplicationController
     @answercomments = Answercomment.all
   end
 
+  def upvote
+    @answercomment = Answercomment.find(params[:id])
+    @answercomment.upvote_from(current_user)
+    redirect_to :back
+  end
+
+  def downvote
+    @answercomment = Answercomment.find(params[:id])
+    @answercomment.downvote_from(current_user)
+    redirect_to :back
+  end
+
   private
 
   def set_answer

@@ -297,21 +297,32 @@
         <% elsif a_comment.user && (a_comment.user.gender == "female" || a_comment.user.gender == "Female") %>
         <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
         <% end %>
-        <div class="inner-comment-wrap">
-          <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
-          <div class="user-name-comment">
-            <% if a_comment.user %>
-              <%= a_comment.user.first_name%> <%= a_comment.user.last_name %>
-              <p class="num-votes-comment"><%=a_comment.get_upvotes.length - a_comment.get_downvotes.length%> votes</p>
-            <% end %>
-          </div>
-            <p><%=raw(a_comment.answercomment_content) %></p>
+        <div class="inner-a-comment-wrap">
+          <div class="inner-a-comments-wrap">
+            <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
+            <div class="user-name-comment">
+              <% if a_comment.user %>
+                <%= a_comment.user.first_name%> <%= a_comment.user.last_name %>
+                <p class="num-votes-comment"><%=a_comment.get_upvotes.length - a_comment.get_downvotes.length%> votes</p>
+              <% end %>
+            </div>
+              <p class="a-comment-content"><%=raw(a_comment.answercomment_content) %></p>
+            </div>
+            <div class="a-comment-footer-index">
+              <%=link_to upvote_answercomment_url(a_comment), method: :put do %>
+                <button class="upvote-btn-comment">Upvote</button>
+              <% end %>
+              <%=link_to downvote_answercomment_url(a_comment), method: :put do %>
+                <button class="downvote-btn-comment">Downvote</button>
+              <% end %>
+              <p style="display: inline; color: #999; font-size: 15px; font-weight: 400;"><%= a_comment.created_at.strftime("%b %d") %></p>
+            </div>
         </div>
         <% end %>
       </div>
 
       <% end %>
     </div>
-    
+
   </div>
 </div>

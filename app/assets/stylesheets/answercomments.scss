@@ -12,3 +12,31 @@
   width: 50%;
   margin-bottom: 11%;
 }
+
+.a-comment-content {
+  float: left;
+  margin-top: 10px;
+  margin-left: 4px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+}
+
+#answercomment-index-wrap {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+}
+
+.inner-a-comments-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.inner-a-comment-wrap {
+  width: 100%;
+}
+
+.a-comment-footer-index {
+  margin-bottom: 5%;
+}
