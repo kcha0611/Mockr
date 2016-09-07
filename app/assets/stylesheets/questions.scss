@@ -42,9 +42,6 @@ height: 88%;
 width: 500px;
 }
 
-.related-question {
-font-size: 1.4em;
-}
 
 .inner-index-item-wrap {
   width: 80%;
@@ -646,7 +643,7 @@ a.intro-learn-more-btn {
 
 .related-question {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1.4em;
   display: block;
   margin-bottom: 25px;
   max-width: 90%;
@@ -654,7 +651,7 @@ a.intro-learn-more-btn {
 }
 
 .more-questions {
-  font-size: 25px;
+  font-size: 1.3em;
   color: #999;
   text-decoration: none;
   margin-bottom: 100px;
@@ -714,9 +711,7 @@ a.intro-learn-more-btn {
 }
 
 .inner-question-form-wrap {
-  width: 35%;
-  height: 75%;
-  // border: 1px solid;
+  width: 500px;
   border-radius: 60px 0px 60px 0px;
   margin-top: 2%;
   background: #68aded;
@@ -892,6 +887,7 @@ ul.question-index-tab-wrap li a:focus, .active {
   display: flex;
   justify-content: center;
   background: white;
+  height: 90.5%;
 }
 
 

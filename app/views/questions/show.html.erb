@@ -270,7 +270,7 @@
       <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;" id="view-upvote">View Upvotes<p></p></a>
       <div class="answer-buttons-wrap" style="margin-bottom: 4%;">
         <%=link_to upvote_answer_url(answer), method: :put do %>
-        <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=(answer.get_upvotes.size - answer.get_downvotes.size) - 1%></p></button>
+        <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=(answer.get_upvotes.size - answer.get_downvotes.size)%></p></button>
         <% end %>
         <a id="answercomment-form-trigger" href="/questions/<%=answer.question_id%>/answers/<%=answer.id%>/answercomments/new" class="answer-comment-btn"><img class="answer-img-show" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>Comment</a>
         <%=link_to downvote_answer_url(answer), method: :put do %>
