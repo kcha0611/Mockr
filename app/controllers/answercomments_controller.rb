@@ -8,6 +8,7 @@ class AnswercommentsController < ApplicationController
   def create
     @answercomment = Answercomment.new(answercomment_params)
     @answercomment.answer_id = @answer.id
+    @answercomment.user_id = current_user.id
     if @answercomment.save
       redirect_to "/questions/#{@answer.question_id}"
     else

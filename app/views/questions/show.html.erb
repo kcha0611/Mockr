@@ -268,7 +268,7 @@
       <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
       <% days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] %>
       <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;" id="view-upvote">View Upvotes<p></p></a>
-      <div class="answer-buttons-wrap" style="margin-bottom: 8%;">
+      <div class="answer-buttons-wrap" style="margin-bottom: 4%;">
         <%=link_to upvote_answer_url(answer), method: :put do %>
         <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=(answer.get_upvotes.size - answer.get_downvotes.size) - 1%></p></button>
         <% end %>
@@ -276,10 +276,42 @@
         <%=link_to downvote_answer_url(answer), method: :put do %>
         <button class="answer-dvote-btn">Downvote</button>
         <% end %>
-        <a href="" class="answer-comments-btn">Comments</a> <p style="display: inline; background: #eee; color: #999; font-size: 20px; font-weight: bold; padding: 3px;">10</p>
+        <a href="javascript:void(0)" class="answer-comments-btn">Comments</a> <p style="display: inline; background: #eee; color: #999; font-size: 20px; font-weight: bold; padding: 3px;"><%=answer.answercomments.length%></p>
       </div>
+
+      <div class="num-a-comments-wrap">
+        <% if answer.answercomments.length == 0 %>
+        <p><%= answer.answercomments.length %> Comments </p>
+        <% else %>
+        <p><%= answer.answercomments.length%>+ Comments </p>
+        <% end %>
+      </div>
+
+      <div id="answercomment-index-wrap">
+        <% answer.answercomments.each do |a_comment| %>
+        <% image = "" %>
+        <% if a_comment.user && (a_comment.user.gender == nil) %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+        <% elsif a_comment.user && (a_comment.user.gender == "male" || a_comment.user.gender == "Male") %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+        <% elsif a_comment.user && (a_comment.user.gender == "female" || a_comment.user.gender == "Female") %>
+        <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+        <% end %>
+        <div class="inner-comment-wrap">
+          <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
+          <div class="user-name-comment">
+            <% if a_comment.user %>
+              <%= a_comment.user.first_name%> <%= a_comment.user.last_name %>
+              <p class="num-votes-comment"><%=a_comment.get_upvotes.length - a_comment.get_downvotes.length%> votes</p>
+            <% end %>
+          </div>
+            <p><%=raw(a_comment.answercomment_content) %></p>
+        </div>
+        <% end %>
+      </div>
+
       <% end %>
     </div>
-
+    
   </div>
 </div>
