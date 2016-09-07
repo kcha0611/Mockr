@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'pages/home'
+  get '/aboutus' => 'aboutus#home'
 
   root to: 'pages#home'
 
@@ -38,6 +39,13 @@ Rails.application.routes.draw do
       put "downvote" => "answers#downvote"
     end
     resources :answercomments, only: [:index]
+  end
+
+  resources :comments do
+    member do
+      put "upvote" => "comments#upvote"
+      put "downvote" => "comments#downvote"
+    end
   end
 
   post '/questions/:question_id/comments' => 'comments#create'

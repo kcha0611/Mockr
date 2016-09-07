@@ -107,7 +107,7 @@
                 <% end %>
               <% end %>
             </ul>
-            <img src="<%=image%>">
+            <img src="<%=image%>" class="comment-user-img">
             <span class="comment-form-name"><%= current_user.first_name.capitalize if current_user %> <%= current_user.last_name.capitalize if current_user %></br><span class="comment-form-occupation">
               <% if current_user %>
                 <% if current_user.occupation.nil? %>
@@ -148,12 +148,17 @@
         <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
         <% end %>
         <div class="inner-comment-wrap">
-          <img src="<%=image%>" height="40" width="40" style="background: #f6f6f6;"/>
-          <div class="user-name-comment"><%= comment.user.first_name%> <%= comment.user.last_name %> <p class="num-votes-comment">1 vote show</p></div>
+          <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
+          <div class="user-name-comment"><%= comment.user.first_name%> <%= comment.user.last_name %> <p class="num-votes-comment"><%=comment.get_upvotes.length - comment.get_downvotes.length%> votes</p></div>
           <p class="comment-content"><br/><%=raw(comment.c_content)%></p>
         </div>
         <div class="comment-footer-index">
-          <a href="javascript:void(0)"class="upvote-btn-comment">Upvote ‌• </a>
+          <%=link_to upvote_comment_url(comment), method: :put do %>
+            <button class="upvote-btn-comment">Upvote</button>
+          <% end %>
+          <%=link_to downvote_comment_url(comment), method: :put do %>
+            <button class="downvote-btn-comment">Downvote</button>
+          <% end %>
           <p style="display: inline; color: #999; font-size: 15px; font-weight: 400;"><%= comment.created_at.strftime("%b %d") %></p>
         </div>
         <% end %>
@@ -262,13 +267,15 @@
       </div>
       <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
       <% days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] %>
-      <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;">View Upvotes</a>
+      <p style="color: #aaa; font-size: 17px; font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">Written <%= days_of_week[1 + rand(6)] %> · <a href="" style="text-decoration: none; color: #aaa;" id="view-upvote">View Upvotes<p></p></a>
       <div class="answer-buttons-wrap" style="margin-bottom: 8%;">
         <%=link_to upvote_answer_url(answer), method: :put do %>
-        <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=answer.get_upvotes.size - answer.get_downvotes.size%></p></button>
+        <button class="answer-vote-btn">Upvote <p style="display: inline; font-weight: bold; border-left: 1px solid #aaa; color: #2865a1;" class="num-upvotes-qshow"><%=(answer.get_upvotes.size - answer.get_downvotes.size) - 1%></p></button>
         <% end %>
         <a id="answercomment-form-trigger" href="/questions/<%=answer.question_id%>/answers/<%=answer.id%>/answercomments/new" class="answer-comment-btn"><img class="answer-img-show" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>Comment</a>
-        <a class="answer-dvote-btn"><%=answer.created_at.strftime("%b %d")%></a>
+        <%=link_to downvote_answer_url(answer), method: :put do %>
+        <button class="answer-dvote-btn">Downvote</button>
+        <% end %>
         <a href="" class="answer-comments-btn">Comments</a> <p style="display: inline; background: #eee; color: #999; font-size: 20px; font-weight: bold; padding: 3px;">10</p>
       </div>
       <% end %>

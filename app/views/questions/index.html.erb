@@ -11,7 +11,7 @@
       <img src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_130,w_208/v1471574993/vote_wrqesy.png" class="question-int-img">
       <h4 class="second-sec-q-title">Get rewarded for your answers.</h4>
       <p class="question-intro-phrase">Experts like you can vote on posts, so the most helpful answers are easy to find.</p>
-        <a class="intro-learn-more-btn">Learn More</a>
+      <a href="/aboutus" class="intro-learn-more-btn">About Us</a>
     </div>
 
     <div class="third-sec-q-intro">
@@ -129,13 +129,12 @@
           <!-- <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
           <a href="" class="add-comment-link-index">Comment</a> -->
           <%= link_to downvote_question_url(question), method: :put do %>
-          <!-- <button class="downvote-button-index">Downvote</button> -->
           <button class="downvote-button-index">Downvote</button>
           <% end %>
         </div>
 
         <div class="comments-wrap-index" style="display: inline">
-          <a href="" class="all-comments-link-index">Answers</a>
+          <a href="/questions/<%=question.id%>" class="all-comments-link-index">Answers</a>
           <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
         </div>
       </div>
@@ -200,18 +199,51 @@
         </div>
 
         <div class="comment-link-img-wrap-index" style="display: inline;">
-          <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-          <a href="" class="add-comment-link-index">Comment</a>
+          <%= link_to downvote_question_url(question), method: :put do %>
+          <button class="downvote-button-index">Downvote</button>
+          <% end %>
         </div>
 
         <div class="comments-wrap-index" style="display: inline">
-          <a href="" class="all-comments-link-index">Answers</a>
+          <a href="/questions/<%=question.id%>" class="all-comments-link-index">Answers</a>
           <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
         </div>
       </div>
       <%end%>
     </div>
   </div>
+
+  <script>
+
+      $('ul.question-index-tab-wrap').each(function(){
+          var $currentTab = $(this).find('a');
+          var $tabContent = $(this).find('a');
+          var $tabLink = $(this).find('a');
+          var currentLocation = window.location.hash;
+          var questionIndexId = $tabLink[0];
+          var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
+
+          $currentTab.addClass('current');
+          $tabContent = $($currentTab[0].hash);
+
+          $tabLink.not($currentTab).each(function () {
+            $(this.hash).hide();
+          });
+
+          $(this).on('click', 'a', function (e) {
+            $currentTab.removeClass('current');
+            $tabContent.hide();
+
+            $currentTab = $(this);
+            $tabContent = $(this.hash);
+
+            $currentTab.addClass('current');
+            $tabContent.show();
+
+            e.preventDefault();
+          });
+        });
+    </script>
 
 
 <!-- <div class="inner-question-index-wrap">
@@ -364,12 +396,13 @@
       </div>
 
       <div class="comment-link-img-wrap-index" style="display: inline;">
-        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="" class="add-comment-link-index">Comment</a>
+        <%= link_to downvote_question_url(question), method: :put do %>
+        <button class="downvote-button-index">Downvote</button>
+        <% end %>
       </div>
 
       <div class="comments-wrap-index" style="display: inline">
-        <a href="" class="all-comments-link-index">Answers</a>
+        <a href="/questions/<%=question.id%>" class="all-comments-link-index">Answers</a>
         <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
       </div>
     </div>
@@ -482,12 +515,13 @@
       </div>
 
       <div class="comment-link-img-wrap-index" style="display: inline;">
-        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="" class="add-comment-link-index">Comment</a>
+        <%= link_to downvote_question_url(question), method: :put do %>
+        <button class="downvote-button-index">Downvote</button>
+        <% end %>
       </div>
 
       <div class="comments-wrap-index" style="display: inline">
-        <a href="" class="all-comments-link-index">Answers</a>
+        <a href="/questions/<%=question.id%>" class="all-comments-link-index">Answers</a>
         <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
       </div>
     </div>

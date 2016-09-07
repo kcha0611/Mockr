@@ -20,11 +20,9 @@
         </div>
       </nav>
     <% end %>
-  <!-- <% login = link_to 'Login', '/login' %>
-  <% signup = link_to 'Signup', '/signup' %> -->
 
-  <% if current_user %>
-    Signed in as <%= current_user.first_name + " " + current_user.last_name %> | <%= link_to "Logout", '/logout' %>
+  <% if current_user && current_uri != "/" %>
+    <div class="logout-btn-wrap"><%= link_to "Logout", '/logout', class: "logout-btn" %></div>
   <% elsif current_uri == "/" %>
     <%= %>
   <% else %>
@@ -33,35 +31,6 @@
 <%= yield %>
   <script>
     document.getElementById("question-index-wrap").style.background = "white";
-
-    $('ul.question-index-tab-wrap').each(function(){
-        var $currentTab = $(this).find('a');
-        var $tabContent = $(this).find('a');
-        var $tabLink = $(this).find('a');
-        var currentLocation = window.location.hash;
-        var questionIndexId = $tabLink[0];
-        var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
-
-        $currentTab.addClass('current');
-        $tabContent = $($currentTab[0].hash);
-
-        $tabLink.not($currentTab).each(function () {
-          $(this.hash).hide();
-        });
-
-        $(this).on('click', 'a', function (e) {
-          $currentTab.removeClass('current');
-          $tabContent.hide();
-
-          $currentTab = $(this);
-          $tabContent = $(this.hash);
-
-          $currentTab.addClass('current');
-          $tabContent.show();
-
-          e.preventDefault();
-        });
-      });
   </script>
 </body>
 </html>

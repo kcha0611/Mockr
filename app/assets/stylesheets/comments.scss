@@ -89,11 +89,27 @@
 .upvote-btn-comment {
   width: 10%;
   display: inline;
-  margin-left: 7%;
+  margin-left: 6%;
   text-decoration: none;
   font-size: 15px;
   font-weight: 400;
   color: #999;
+  border: none;
+  background: #f6f6f6;
+  padding: 0;
+}
+
+.downvote-btn-comment {
+  background: #f6f6f6;
+  color: #999;
+  font-size: 14.1px;
+  font-weight: 400;
+  border: none;
+  margin-right: 1%;
+}
+
+.upvote-btn-comment:hover, .downvote-btn-comment:hover {
+  cursor: pointer;
 }
 
 .comment-footer-wrap {
@@ -138,4 +154,8 @@ p.comment-error {
 ul.c-errors {
   padding: 0;
   margin-top: 0;
+}
+
+.comment-user-img {
+  background: #f6f6f6;
 }
