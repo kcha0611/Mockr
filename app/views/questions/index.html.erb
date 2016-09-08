@@ -91,12 +91,9 @@
         <% else %>
         <% phrase = question.user.phrase %>
         <% end %>
-        <% if question.user.occupation == nil %>
         <% random_year = 1 + rand(5) %>
         <% random_view = 1 + rand(100) %>
         <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-        <% else %>
-        <% occupation = question.user.occupation %>
         <% end %>
         <p class="profile-tag"><img src="<%=image%>" class="<%=clss%>"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
         <p class="profile-occ"><%=occupation%></p>

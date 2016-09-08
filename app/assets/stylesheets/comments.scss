@@ -165,26 +165,7 @@ ul.c-errors {
   font-size: 0.82em;
 }
 
-@media only screen and (max-width: 1400px) {
-    .user-name-comment {
-        margin-left: 4px;
-    }
-    #votes-by-comment {
-      margin-left: 19%;
-    }
-    .upvote-btn-comment {
-      margin-left: 6%;
-    }
-    .question-a-tag {
-      position: relative;
-      top: 27%;
-    }
-    .profile-occ {
-      width: 99%;
-    }
-}
-
-@media only screen and (min-width: 1600px) {
+@media only screen and (max-width: 2500px) {
     .user-name-comment {
       margin-left: 5.5%;
     }
@@ -219,9 +200,29 @@ ul.c-errors {
       display: flex;
       justify-content: center;
     }
-    .male-img-index, .female-img-index {
+    img.male-img-index, img.female-img-index {
       position: relative;
       top: 12px;
       height: 33px;
+    }
+}
+
+
+@media only screen and (max-width: 1400px) {
+    .user-name-comment {
+      margin-left: 4px;
+    }
+    #votes-by-comment {
+      margin-left: 19%;
+    }
+    .upvote-btn-comment {
+      margin-left: 6%;
+    }
+    .question-a-tag {
+      position: relative;
+      top: 27%;
+    }
+    .profile-occ {
+      width: 99%;
     }
 }
