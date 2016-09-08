@@ -175,9 +175,13 @@ ul.c-errors {
     .upvote-btn-comment {
       margin-left: 6%;
     }
+    .question-a-tag {
+      position: relative;
+      top: 27%;
+    }
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (min-width: 1600px) {
     .user-name-comment {
       margin-left: 5.5%;
     }
@@ -205,5 +209,11 @@ ul.c-errors {
     .answer-pro-occ {
       position: relative;
       left: 5.6%;
+    }
+    .question-a-tag {
+      position: relative;
+      top: 25%;
+      display: flex;
+      justify-content: center;
     }
 }
