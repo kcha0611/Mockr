@@ -265,23 +265,25 @@
 
   <div class="answer-wrap">
     <% @question.answers.each do |answer| %>
-      <% if answer.question.user.gender == nil %>
+      <% if answer.user.gender == nil %>
       <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
       <% else %>
       <% image %>
       <% end %>
-      <% if answer.question.user.phrase == nil %>
+      <% if answer.user.phrase == nil %>
       <% phrase = "I am a lover of dogs and this website!" %>
       <% else %>
-      <% phrase = answer.question.user.phrase %>
+      <% phrase = answer.user.phrase %>
       <% end %>
-      <% if answer.question.user.occupation == nil %>
+      <% if answer.user.occupation == nil %>
       <% random_year = 1 + rand(1) %>
       <% random_view = 1 + rand(1000) %>
       <% occupation = "#{random_view}k views · Mockr Member for #{random_year} years" %>
+      <% else %>
+      <% occupation = answer.user.occupation %>
       <% end %>
       <div class="answer-pro-wrap">
-        <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.question.user.first_name.capitalize + " " + answer.question.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"><br/><%=occupation%></span></p>
+        <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"><br/><%=occupation%></span></p>
         <!-- <p class="answer-pro-occ" ><%=occupation%></p> -->
       </div>
       <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
