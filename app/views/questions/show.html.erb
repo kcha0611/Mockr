@@ -148,8 +148,27 @@
         <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
         <% end %>
         <div class="inner-comment-wrap">
-          <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
-          <div class="user-name-comment"><%= comment.user.first_name%> <%= comment.user.last_name %> <p class="num-votes-comment"><%=comment.get_upvotes.length - comment.get_downvotes.length%> votes</p></div>
+            <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
+            <div class="user-name-comment"><%= comment.user.first_name.capitalize%> <%= comment.user.last_name.capitalize %> <p class="num-votes-comment" id="num-votes-comment"><%=comment.get_upvotes.length - comment.get_downvotes.length%> votes<a id="comment-vote-show" href="javascript:void(0)" style="color: #999;"> show</a></p></div>
+            <div id="comment-voters-wrap" style="display: inline;">
+              <% if comment.votes_for.up.by_type(User).voters.length == 0 %>
+                <span class="num-votes-comment" id="votes-by-comment" style="display: inline; margin-left: 19%;">No upvotes yet</span>
+              <% else %>
+                <% comment.votes_for.up.by_type(User).voters.each do |voter| %>
+                <span id="votes-by-comment" class="num-votes-comment" style="display: inline;">by <%=voter.first_name.capitalize%> <%= voter.last_name.capitalize%></span>
+                <% end %>
+              <% end %>
+            </div>
+
+            <script>
+            $(document).ready(function () {
+              $("#comment-voters-wrap").hide();
+              $("#comment-vote-show").on("click", function () {
+                $("#comment-vote-show").hide();
+                $("#comment-voters-wrap").show();
+              })
+            })
+            </script>
           <p class="comment-content"><br/><%=raw(comment.c_content)%></p>
         </div>
         <div class="comment-footer-index">
