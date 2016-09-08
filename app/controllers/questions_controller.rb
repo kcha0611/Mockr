@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     if @question.save
-      redirect_to "/questions"
+      redirect_to "/questions/#{@question.id}"
     else
       flash.now[:errors] = @question.errors.full_messages
       render :new

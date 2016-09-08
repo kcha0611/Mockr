@@ -283,7 +283,7 @@
       <% occupation = answer.user.occupation %>
       <% end %>
       <div class="answer-pro-wrap">
-        <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"><br/><%=occupation%></span></p>
+        <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"></span></p>
         <!-- <p class="answer-pro-occ" ><%=occupation%></p> -->
       </div>
       <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
