@@ -191,7 +191,7 @@ ul.c-errors {
       margin-left: 9.45%;
     }
     .answer-pro-occ {
-      position: relative;
+      position: absolute;
       left: 0;
     }
     .question-a-tag {
@@ -204,6 +204,9 @@ ul.c-errors {
       position: relative;
       top: 12px;
       height: 33px;
+    }
+    .answer-profile-tag {
+      margin-bottom: 10%;
     }
 }
 
@@ -224,5 +227,9 @@ ul.c-errors {
     }
     .profile-occ {
       width: 99%;
+    }
+    .answer-pro-occ {
+      left: 7.6%;
+      position: absolute;
     }
 }
