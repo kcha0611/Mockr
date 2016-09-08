@@ -66,7 +66,6 @@
 .user-name-comment {
   font-weight: bold;
   position: absolute;
-  margin-left: 4px;
   font-size: 14px;
   // top: 5px;
   width: auto;
@@ -165,5 +164,16 @@ ul.c-errors {
   margin-left: 18.3%;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 0.82em;
+}
 
+@media only screen and (max-width: 1400px) {
+    .user-name-comment {
+        margin-left: 4px;
+    }
+}
+
+@media only screen and (max-width: 2000px) {
+    .user-name-comment {
+        margin-left: 6.4%;
+    }
 }
