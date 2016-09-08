@@ -88,7 +88,6 @@
 .upvote-btn-comment {
   width: 10%;
   display: inline;
-  margin-left: 6%;
   text-decoration: none;
   font-size: 15px;
   font-weight: 400;
@@ -170,10 +169,31 @@ ul.c-errors {
     .user-name-comment {
         margin-left: 4px;
     }
+    #votes-by-comment {
+      margin-left: 19%;
+    }
+    .upvote-btn-comment {
+      margin-left: 6%;
+    }
 }
 
 @media only screen and (max-width: 2000px) {
     .user-name-comment {
-        margin-left: 6.4%;
+      margin-left: 6.4%;
+    }
+    #votes-by-comment {
+      margin-left: 14.9%;
+    }
+    .upvote-btn-comment {
+      margin-left: 3%;
+    }
+    .answer-form-occupation {
+      margin-left: 6%;
+    }
+    .form-answer-btn {
+      margin-left: 85%;
+    }
+    .comment-submit-btn {
+      margin-left: 82%;
     }
 }

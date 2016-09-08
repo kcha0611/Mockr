@@ -152,7 +152,7 @@
             <div class="user-name-comment"><%= comment.user.first_name.capitalize%> <%= comment.user.last_name.capitalize %> <p class="num-votes-comment" id="num-votes-comment"><%=comment.get_upvotes.length - comment.get_downvotes.length%> votes<a id="comment-vote-show" href="javascript:void(0)" style="color: #999;"> show</a></p></div>
             <div id="comment-voters-wrap" style="display: inline;">
               <% if comment.votes_for.up.by_type(User).voters.length == 0 %>
-                <span class="num-votes-comment" id="votes-by-comment" style="display: inline; margin-left: 19%;">No upvotes yet</span>
+                <span class="num-votes-comment" id="votes-by-comment" style="display: inline;">No upvotes yet</span>
               <% else %>
                 <% comment.votes_for.up.by_type(User).voters.each do |voter| %>
                 <span id="votes-by-comment" class="num-votes-comment" style="display: inline;">by <%=voter.first_name.capitalize%> <%= voter.last_name.capitalize%></span>
