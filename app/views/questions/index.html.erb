@@ -78,10 +78,13 @@
       <div class="questions-info-wrap">
         <% if question.user.gender == nil %>
         <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
+        <% clss = "profile-img" %>
         <% elsif question.user.gender == "male" || question.user.gender == "Male" %>
         <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+        <% clss = "male-img-index" %>
         <% elsif question.user.gender == "female" || question.user.gender == "Female" %>
         <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
+        <% clss = "female-img-index" %>
         <% end %>
         <% if question.user.phrase == nil %>
         <% phrase = "I am a lover of dogs and this website!" %>
@@ -90,12 +93,12 @@
         <% end %>
         <% if question.user.occupation == nil %>
         <% random_year = 1 + rand(5) %>
-        <% random_view = 1 + rand(1000) %>
+        <% random_view = 1 + rand(100) %>
         <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
         <% else %>
         <% question.user.occupation %>
         <% end %>
-        <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
+        <p class="profile-tag"><img src="<%=image%>" class="<%=clss%>"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
         <p class="profile-occ"><%=occupation%></p>
     </div>
 

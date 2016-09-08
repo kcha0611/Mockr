@@ -179,6 +179,9 @@ ul.c-errors {
       position: relative;
       top: 27%;
     }
+    .profile-occ {
+      width: 99%;
+    }
 }
 
 @media only screen and (min-width: 1600px) {
@@ -215,5 +218,10 @@ ul.c-errors {
       top: 25%;
       display: flex;
       justify-content: center;
+    }
+    .profile-img {
+      position: relative;
+      top: 12px;
+      height: 33px;
     }
 }
