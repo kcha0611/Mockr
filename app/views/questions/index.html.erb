@@ -161,15 +161,13 @@
         <% else %>
         <% phrase = question.user.phrase %>
         <% end %>
-        <% if question.user.occupation == nil %>
         <% random_year = 1 + rand(5) %>
-        <% random_view = 1 + rand(1000) %>
+        <% random_view = 1 + rand(100) %>
         <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-        <% else %>
-        <% question.user.occupation %>
-        <% end %>
-        <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
-        <p class="profile-occ"><%=occupation%></p>
+        <div class="profile-index-wrap">
+          <p class="profile-tag"><strong><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize%></strong><%=", " + phrase%></p>
+          <p class="profile-occ"><%=occupation%></p>
+        </div>
     </div>
 
       <div class="all-question-wrap">
@@ -213,133 +211,6 @@
     </div>
   </div>
 
-  <script>
-
-      $('ul.question-index-tab-wrap').each(function(){
-          var $currentTab = $(this).find('a');
-          var $tabContent = $(this).find('a');
-          var $tabLink = $(this).find('a');
-          var currentLocation = window.location.hash;
-          var questionIndexId = $tabLink[0];
-          var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
-
-          $currentTab.addClass('current');
-          $tabContent = $($currentTab[0].hash);
-
-          $tabLink.not($currentTab).each(function () {
-            $(this.hash).hide();
-          });
-
-          $(this).on('click', 'a', function (e) {
-            $currentTab.removeClass('current');
-            $tabContent.hide();
-
-            $currentTab = $(this);
-            $tabContent = $(this.hash);
-
-            $currentTab.addClass('current');
-            $tabContent.show();
-
-            e.preventDefault();
-          });
-        });
-    </script>
-
-
-<!-- <div class="inner-question-index-wrap">
-    <div id="question-index-wrap1" class="questions">
-      <% @rand_questions.each do |question| %>
-      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
-      <% if question.user.gender == nil %>
-      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
-      <% end %>
-      <% if question.user.phrase == nil %>
-      <% phrase = "I am a lover of dogs and this website!" %>
-      <% else %>
-      <% phrase = question.user.phrase %>
-      <% end %>
-      <% if question.user.occupation == nil %>
-      <% random_year = 1 + rand(5) %>
-      <% random_view = 1 + rand(1000) %>
-      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-      <% end %>
-      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
-      <p class="profile-occ"><%=occupation%></p>
-      <div class="all-question-wrap">
-        <div class="index-item-wrap">
-          <div class="inner-index-item-wrap">
-            <% unless question.q_title.split("").include?("?") %>
-            <% question.q_title += "?" %>
-            <% end %>
-              <a href="/questions/<%=question.id%>" class="question-a-tag"><%= question.q_title %></a>
-          </div>
-        </div>
-      </div>
-      <div class="answer-link-img-wrap-index" style="display: inline;">
-        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
-      </div>
-
-      <div class="comment-link-img-wrap-index" style="display: inline;">
-        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="" class="add-comment-link-index">Comment</a>
-      </div>
-
-      <div class="comments-wrap-index" style="display: inline">
-        <a href="" class="all-comments-link-index">Answers</a>
-        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
-      </div>
-      <% end %>
-    </div>
-</div> -->
-
-<!-- <div class="inner-question-index-wrap">
-    <div id="question-index-wrap2" class="questions">
-      <% @pop_questions.each do |question| %>
-      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
-      <% if question.user.gender == nil %>
-      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
-      <% end %>
-      <% if question.user.phrase == nil %>
-      <% phrase = "I am a lover of dogs and this website!" %>
-      <% else %>
-      <% phrase = question.user.phrase %>
-      <% end %>
-      <% if question.user.occupation == nil %>
-      <% random_year = 1 + rand(5) %>
-      <% random_view = 1 + rand(1000) %>
-      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-      <% end %>
-      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
-      <p class="profile-occ"><%=occupation%></p>
-      <div class="all-question-wrap">
-        <div class="index-item-wrap">
-          <div class="inner-index-item-wrap">
-            <% unless question.q_title.split("").include?("?") %>
-            <% question.q_title += "?" %>
-            <% end %>
-              <a href="/questions/<%=question.id%>" class="question-a-tag"><%= question.q_title %></a>
-          </div>
-        </div>
-      </div>
-      <div class="answer-link-img-wrap-index" style="display: inline;">
-        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
-      </div>
-
-      <div class="comment-link-img-wrap-index" style="display: inline;">
-        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="" class="add-comment-link-index">Comment</a>
-      </div>
-
-      <div class="comments-wrap-index" style="display: inline">
-        <a href="" class="all-comments-link-index">Answers</a>
-        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
-      </div>
-      <% end %>
-    </div>
-</div> -->
-
 <div class="inner-question-index-wrap">
   <a name="question-index-wrap"></a>
   <div id="question-index-wrap2" class="questions">
@@ -358,15 +229,13 @@
       <% else %>
       <% phrase = question.user.phrase %>
       <% end %>
-      <% if question.user.occupation == nil %>
       <% random_year = 1 + rand(5) %>
-      <% random_view = 1 + rand(1000) %>
+      <% random_view = 1 + rand(100) %>
       <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-      <% else %>
-      <% question.user.occupation %>
-      <% end %>
-      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
-      <p class="profile-occ"><%=occupation%></p>
+      <div class="profile-index-wrap">
+        <p class="profile-tag"><strong><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize%></strong><%=", " + phrase%></p>
+        <p class="profile-occ"><%=occupation%></p>
+      </div>
   </div>
 
     <div class="all-question-wrap">
@@ -410,55 +279,6 @@
   </div>
 </div>
 
-<!-- <div class="inner-question-index-wrap">
-    <div id="question-index-wrap3" class="questions">
-      <% @unanswered_questions.each do |question| %>
-      <p class="question-subject">Question Asked ‣ <%=1 + rand(24)%>h ago</p>
-      <% if question.user.gender == nil %>
-      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
-      <% end %>
-      <% if question.user.phrase == nil %>
-      <% phrase = "I am a lover of dogs and this website!" %>
-      <% else %>
-      <% phrase = question.user.phrase %>
-      <% end %>
-      <% if question.user.occupation == nil %>
-      <% random_year = 1 + rand(5) %>
-      <% random_view = 1 + rand(1000) %>
-      <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-      <% end %>
-      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
-      <p class="profile-occ"><%=occupation%></p>
-      <div class="all-question-wrap">
-        <div class="index-item-wrap">
-          <div class="inner-index-item-wrap">
-            <% unless question.q_title.split("").include?("?") %>
-            <% question.q_title += "?" %>
-            <% end %>
-              <a href="/questions/<%=question.id%>" class="question-a-tag"><%= question.q_title %></a>
-          </div>
-        </div>
-      </div>
-      <div class="answer-link-img-wrap-index" style="display: inline;">
-        <img class="answer-link-img-index"src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="/questions/<%=question.id%>/answers/new" class="add-answer-link-index">Answer</a>
-      </div>
-
-      <div class="comment-link-img-wrap-index" style="display: inline;">
-        <img class="comment-link-img-index" src="http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_25,w_25/v1471926477/-images.new_grid.ask_blue.svgccfb7387221f6db3_i1rgug.png"/>
-        <a href="" class="add-comment-link-index">Comment</a>
-      </div>
-
-      <div class="comments-wrap-index" style="display: inline">
-        <a href="" class="all-comments-link-index">Answers</a>
-        <p class="num-comments-index" style="display: inline;"><%=question.answers.length%></p>
-      </div>
-      <% end %>
-    </div>
-</div>
-
-</div> -->
-
 <div class="inner-question-index-wrap">
   <a name="question-index-wrap"></a>
   <div id="question-index-wrap3" class="questions">
@@ -477,15 +297,13 @@
       <% else %>
       <% phrase = question.user.phrase %>
       <% end %>
-      <% if question.user.occupation == nil %>
       <% random_year = 1 + rand(5) %>
-      <% random_view = 1 + rand(1000) %>
+      <% random_view = 1 + rand(100) %>
       <% occupation = "#{random_view}k views, Mockr Member for #{random_year} years" %>
-      <% else %>
-      <% question.user.occupation %>
-      <% end %>
-      <p class="profile-tag"><img src="<%=image%>" class="profile-img"></img><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize + ", " + phrase%></p>
-      <p class="profile-occ"><%=occupation%></p>
+      <div class="profile-index-wrap">
+        <p class="profile-tag"><strong><%=question.user.first_name.capitalize + " " + question.user.last_name.capitalize%></strong><%=", " + phrase%></p>
+        <p class="profile-occ"><%=occupation%></p>
+      </div>
   </div>
 
     <div class="all-question-wrap">
@@ -498,6 +316,40 @@
         </div>
       </div>
     </div>
+
+
+      <script>
+
+          $('ul.question-index-tab-wrap').each(function(){
+              var $currentTab = $(this).find('a');
+              var $tabContent = $(this).find('a');
+              var $tabLink = $(this).find('a');
+              var currentLocation = window.location.hash;
+              var questionIndexId = $tabLink[0];
+              var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
+
+              $currentTab.addClass('current');
+              $tabContent = $($currentTab[0].hash);
+
+              $tabLink.not($currentTab).each(function () {
+                $(this.hash).hide();
+              });
+
+              $(this).on('click', 'a', function (e) {
+                $currentTab.removeClass('current');
+                $tabContent.hide();
+
+                $currentTab = $(this);
+                $tabContent = $(this.hash);
+
+                $currentTab.addClass('current');
+                $tabContent.show();
+
+                e.preventDefault();
+              });
+            });
+        </script>
+
 
 
     <div style="display:inline;">
