@@ -110,7 +110,7 @@
                 <% end %>
             <% end %>
               </span></span>
-            <%= f.cktext_area :c_content, class: "ckeditor" %>
+            <%= f.cktext_area :c_content, class: "ckeditor", data: { 'no-turbolink' => true } %>
             <%= f.submit "Comment", class: "comment-submit-btn" %>
             <% end %>
             <button id="cancel-comment-btn" style="display:inline;">Cancel</button>
@@ -226,7 +226,7 @@
         <% end %>
         </span></span>
           <%= form_for :answer, url: "/questions/#{@question.id}/answers" do |f| %>
-            <%= f.cktext_area :a_content, class: "ckeditor" %>
+            <%= f.cktext_area :a_content, class: "ckeditor", data: { 'no-turbolink' => true } %>
             <%= f.submit "Answer", class: "form-answer-btn" %>
           <% end %>
           <button class="hide-answer-btn" id="cancel-answer-btn">Cancel</button>
@@ -278,7 +278,7 @@
       <% occupation = answer.user.occupation || "Mockr Member" %>
       <% end %>
       <div class="answer-pro-wrap">
-        <p class="answer-profile-tag" style="font-size: 1.1em;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%>
+        <p class="answer-profile-tag" style="font-size: 0.9em;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%>
         <!-- <p class="answer-pro-occ" ><%=occupation%></p> -->
       </div>
       <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
