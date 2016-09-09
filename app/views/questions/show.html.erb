@@ -2,17 +2,9 @@
   <div class="inner-question-show-wrap">
     <div class="related-questions-wrap">
       <div class="inner-related-questions-wrap" style="">
-          <p class="related-questions">More Questions</p>
+          <p class="related-questions">Other Questions</p>
           <% Question.all.each do |question| %>
           <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a>
-          <!-- <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a>
-          <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a>
-          <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a>
-          <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a>
-          <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a>
-          <a href="/questions/<%=question.id%>" class="related-question"><%=question.q_title%></a> -->
-          <!-- <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a>
-          <a href="" class="related-question">The first quetsions is going to go here and will take up 2 lines of space</a> -->
           <% end %>
           <a href="/questions" class="more-questions">More Questions</a>
           <p class="question-stats">Question Stats</p>
@@ -268,8 +260,10 @@
     <% @question.answers.each do |answer| %>
       <% if answer.user.gender == nil %>
       <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,r_30,w_45/v1471641836/star-wars-facebook-avatar-profile_698654_y4qhq5.jpg" %>
-      <% else %>
-      <% image %>
+      <% elsif (answer.user.gender == "male" || answer.user.gender == "Male") %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,w_45/v1472239548/latest_cz23gu.jpg" %>
+      <% elsif (answer.user.gender == "female" || answer.user.gender == "Female") %>
+      <% image = "http://res.cloudinary.com/dllnnnotc/image/upload/c_scale,h_45,w_45/v1471641031/f8186b8f1b13ddb159119147d6430831_ugzrjx.jpg" %>
       <% end %>
       <% if answer.user.phrase == nil %>
       <% phrase = "I am a lover of dogs and this website!" %>
@@ -281,10 +275,11 @@
       <% random_view = 1 + rand(1000) %>
       <% occupation = "#{random_view}k views · Mockr Member for #{random_year} years" %>
       <% else %>
-      <% occupation = answer.user.occupation %>
+      <% occupation = answer.user.occupation || "Mockr Member" %>
       <% end %>
       <div class="answer-pro-wrap">
-        <p class="answer-profile-tag" style="font-size: 20px;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"></span></p>
+        <p class="answer-profile-tag" style="font-size: 1.4em;"><img src="<%=image%>"style="position: relative; bottom: 3px;" class="answer-pro-img"></img><span style="font-weight: bold;"><%=answer.user.first_name.capitalize + " " + answer.user.last_name.capitalize%></span> <%=", " + phrase%><span class="answer-pro-occ"></span></p>
+        <p class="answer-user-occ"><%=occupation%></p>
         <!-- <p class="answer-pro-occ" ><%=occupation%></p> -->
       </div>
       <p class="qshow-a-content"><%=raw(answer.a_content)%></p>
