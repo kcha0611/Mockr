@@ -104,7 +104,7 @@
   font-weight: 400;
   border: none;
   padding: 0;
-  margin-right: 1%;
+  margin-right: 2%;
 }
 
 .upvote-btn-comment:hover, .downvote-btn-comment:hover {
@@ -166,7 +166,7 @@ ul.c-errors {
   font-size: 0.82em;
 }
 
-@media only screen and (max-width: 2500px) {
+@media only screen and (min-width: 1700px) {
     .user-name-comment {
       margin-left: 5%;
     }
@@ -222,6 +222,18 @@ ul.c-errors {
     .comment-form-occupation {
       margin-left: 6.5%;
     }
+}
+
+@media only screen and {min-width: 1400px} {
+  .form-answer-btn {
+    margin-left: 80%;
+  }
+}
+
+@media only screen and {min-width: 1600px} {
+  .form-answer-btn {
+    margin-left: 83%;
+  }
 }
 
 
