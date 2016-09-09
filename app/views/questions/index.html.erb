@@ -211,6 +211,39 @@
     </div>
   </div>
 
+  <script>
+
+      $('ul.question-index-tab-wrap').each(function(){
+          var $currentTab = $(this).find('a');
+          var $tabContent = $(this).find('a');
+          var $tabLink = $(this).find('a');
+          var currentLocation = window.location.hash;
+          var questionIndexId = $tabLink[0];
+          var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
+
+          $currentTab.addClass('current');
+          $tabContent = $($currentTab[0].hash);
+
+          $tabLink.not($currentTab).each(function () {
+            $(this.hash).hide();
+          });
+
+          $(this).on('click', 'a', function (e) {
+            $currentTab.removeClass('current');
+            $tabContent.hide();
+
+            $currentTab = $(this);
+            $tabContent = $(this.hash);
+
+            $currentTab.addClass('current');
+            $tabContent.show();
+
+            e.preventDefault();
+          });
+        });
+    </script>
+
+
 <div class="inner-question-index-wrap">
   <a name="question-index-wrap"></a>
   <div id="question-index-wrap2" class="questions">
@@ -316,40 +349,6 @@
         </div>
       </div>
     </div>
-
-
-      <script>
-
-          $('ul.question-index-tab-wrap').each(function(){
-              var $currentTab = $(this).find('a');
-              var $tabContent = $(this).find('a');
-              var $tabLink = $(this).find('a');
-              var currentLocation = window.location.hash;
-              var questionIndexId = $tabLink[0];
-              var defaultQuestionIndexId = $($tabLink.filter('[href="'+ currentLocation +'"]')[0] || questionIndexId);
-
-              $currentTab.addClass('current');
-              $tabContent = $($currentTab[0].hash);
-
-              $tabLink.not($currentTab).each(function () {
-                $(this.hash).hide();
-              });
-
-              $(this).on('click', 'a', function (e) {
-                $currentTab.removeClass('current');
-                $tabContent.hide();
-
-                $currentTab = $(this);
-                $tabContent = $(this.hash);
-
-                $currentTab.addClass('current');
-                $tabContent.show();
-
-                e.preventDefault();
-              });
-            });
-        </script>
-
 
 
     <div style="display:inline;">
