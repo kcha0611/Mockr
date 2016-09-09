@@ -224,20 +224,20 @@ ul.c-errors {
     }
 }
 
-@media only screen and {min-width: 1400px} {
+@media only screen and (min-width: 1400px) {
   .form-answer-btn {
     margin-left: 80%;
   }
 }
 
-@media only screen and {min-width: 1600px} {
+@media only screen and (min-width: 1600px) {
   .form-answer-btn {
     margin-left: 83%;
   }
 }
 
 
-@media only screen and {max-width: 1400px} {
+@media only screen and (max-width: 1400px) {
     .user-name-comment {
       margin-left: 4px;
     }
