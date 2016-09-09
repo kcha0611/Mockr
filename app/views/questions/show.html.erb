@@ -71,7 +71,7 @@
 
       <div class="downvote-img-wrap" style="display: inline;">
         <%=link_to upvote_question_url(@question), method: :put do %>
-        <button class="upvote-btn-show">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=@question.get_upvotes.size - @question.get_downvotes.size%></p></button>
+        <button class="upvote-btn-show">Upvote <p style="display: inline; border-left: 1px solid #bbcadc; padding-left: 4px; font-weight: bold;"><%=@question.get_upvotes.size%></p></button>
         <% end %>
       </div>
 
@@ -142,16 +142,16 @@
         <% end %>
         <div class="inner-comment-wrap">
             <img src="<%=image%>" class="comment-user-img" height="40" width="40" style="background: #f6f6f6;"/>
-            <div class="user-name-comment"><%= comment.user.first_name.capitalize%> <%= comment.user.last_name.capitalize %> <p class="num-votes-comment" id="num-votes-comment"><%=comment.get_upvotes.length - comment.get_downvotes.length%> votes</p></div>
-            <div id="comment-voters-wrap" style="display: inline;">
+            <div class="user-name-comment"><%= comment.user.first_name.capitalize%> <%= comment.user.last_name.capitalize %> <p class="num-votes-comment" id="num-votes-comment"><%=comment.get_upvotes.length%> votes</p></div>
+            <!-- <div id="comment-voters-wrap" style="display: inline;">
               <% if comment.votes_for.up.by_type(User).voters.length == 0 %>
                 <span class="num-votes-comment" id="votes-by-comment" style="display: inline;">No upvotes yet</span>
               <% else %>
                 <% comment.votes_for.up.by_type(User).voters.each do |voter| %>
-                <span id="votes-by-comment" class="num-votes-comment" style="display: inline;">by <%=voter.first_name.capitalize%> <%= voter.last_name.capitalize%></span>
+                <span id="votes-by-comment" class="num-votes-comment" style="display: inline; position: fixed;">by <%=voter.first_name.capitalize%> <%= voter.last_name.capitalize%></span>
                 <% end %>
               <% end %>
-            </div>
+            </div> -->
 
             <!-- <script>
             $(document).ready(function () {
@@ -319,7 +319,7 @@
             <div class="user-name-comment">
               <% if a_comment.user %>
                 <%= a_comment.user.first_name%> <%= a_comment.user.last_name %>
-                <p class="num-votes-comment"><%=a_comment.get_upvotes.length - a_comment.get_downvotes.length%> votes</p>
+                <p class="num-votes-comment"><%=a_comment.get_upvotes.length%> votes</p>
               <% end %>
             </div>
               <p class="a-comment-content"><%=raw(a_comment.answercomment_content) %></p>
