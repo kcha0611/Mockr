@@ -384,7 +384,7 @@ a.intro-learn-more-btn {
   width: 100%;
   display: flex;
   justify-content: center;
-  min-height: 100%;
+  min-height: 126%;
   overflow: hidden;
 }
 
@@ -895,12 +895,10 @@ ul.question-index-tab-wrap li a:focus, .active {
 .downvote-button-index {
   background: white;
   border: none;
-  // text-decoration: none;
   color: #999;
   font-weight: 400;
   font-size: 15px;
   position:relative;
-  // left: 5px;
 }
 
 a {
